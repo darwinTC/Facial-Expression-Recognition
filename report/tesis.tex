@@ -1,0 +1,198 @@
+\documentclass[letterpaper,12pt]{report}
+\usepackage[utf8]{inputenc}
+%\usepackage[brazilian]{babel}
+
+%library for algorithms
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode}
+
+
+\usepackage[spanish]{babel}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{multirow} % para las tablas
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{url}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{setspace}
+\usepackage{geometry}
+\usepackage{verbatim}
+\usepackage{caption}
+\geometry{top=2.5cm,bottom=2.2cm,left=2.5cm,right=2.5cm}
+\usepackage{endnotes}
+\usepackage{hyperref}
+\usepackage{float}
+%\usepackage{glossaries}
+\usepackage[acronym]{glossaries}
+\usepackage[nocompress]{cite}
+\usepackage{float}
+
+\makeglossaries
+
+%--------------
+\makeatletter
+\def\BState{\State\hskip-\ALG@thistlm}
+\makeatother
+
+
+%--------------
+\newcommand{\Px}{\mathbf{x}}
+\newcommand{\PX}{\mathbf{X}}
+\renewcommand{\sin}{\qopname\relax o{sen}}
+
+\newenvironment{myenumerate}{
+	\begin{enumerate}
+		\setlength{\itemsep}{5pt}
+		\setlength{\parskip}{0pt}
+		\setlength{\parsep}{5pt}
+	}{\end{enumerate}}
+
+\newenvironment{myitemize}{
+	\begin{itemize}
+		\setlength{\itemsep}{5pt}
+		\setlength{\parskip}{0pt}
+		\setlength{\parsep}{5pt}
+	}{\end{itemize}}
+
+%--------------------------------------------
+
+
+
+\begin{document}
+\tolerance=999
+\sloppy
+\renewcommand\bibname{BIBLIOGRAFIA}
+
+%--------------------------------------caratula
+\pagenumbering{Roman} % para comenzar la numeracion de paginas en numeros romanos
+\thispagestyle{empty} %oculta la numeracion
+
+\begin{center} {\large \bf UNIVERSIDAD NACIONAL DE SAN ANTONIO ABAD DEL CUSCO} \end{center}
+\begin{center} {\large \bf FACULTAD DE INGENIERÍA ELÉCTRICA, ELECTRÓNICA, INFORMÁTICA Y MECÁNICA} \end{center}
+\begin{center} {\large  ESCUELA PROFESIONAL DE INGENIERÍA INFORMÁTICA Y DE SISTEMAS} \end{center}
+\vspace{0.5cm}
+\begin{figure}[htb]
+\centering
+\includegraphics[width=33mm]{Imagenes/simbolo_unsaac.png}
+\end{figure}
+\vspace{0.5cm}
+\begin{center} {\large \textbf{TESIS DE INVESTIGACIÓN}} \end{center}
+\vspace{0.5cm}
+\begin{center}  {\textsc{\textbf{DESARROLLO DE UNA ARQUITECTURA DE RED NEURONAL
+CONVOLUCIONAL COMO UN MODELO DEL PROCESO
+CEREBRAL HUMANO PARA LA CLASIFICACIÓN DE
+EXPRESIONES FACIALES}}}
+
+\vspace{1.5cm}
+
+{\textbf{Para optar al título profesional de}: \\Ingeniero Informático y de Sistemas\\[0.2cm ]
+}
+
+{\textbf{Presentado por}: \\
+\hspace{-0.25cm} Br. Darwin Ttito Concha \\ 
+\hspace{0.5cm} Br. Paul Dany Flores Atauchi \\[0.2cm ]
+\textbf{Asesor}: \\Prof. Msc. Lauro Enciso Rodas \\[0.2cm]
+\textbf{Co-Asesor:} \\Prof. M.Eng E. Gladys Cutipa Arapa \\[0.2cm]
+}
+
+\vspace{1.0cm}
+\begin{center} {\tiny  \textbf{FINANCIADO POR EL CONSEJO DE INVESTIGACIÓN DE LA UNSAAC}} \end{center}
+\begin{center} {CUSCO - PERÚ\\
+2017} \end{center}
+\end{center}
+%------------------------------------------------------------------
+
+\clearpage
+
+\begin{spacing}{1.05} %interlineado
+
+\include{dedicatoria}
+\include{resumen}
+\include{abstract}
+
+%----------------------------------------indices
+\renewcommand{\contentsname}{Índice General}
+\renewcommand{\listfigurename}{Índice de Figuras}
+\renewcommand{\listtablename}{Índice de Tablas}
+\renewcommand\tablename{Tabla}
+\tableofcontents
+
+\cleardoublepage
+\addcontentsline{toc}{chapter}{Indice de Figuras} % para que aparezca en el indice de contenidos
+\listoffigures
+
+\cleardoublepage
+\addcontentsline{toc}{chapter}{Indice de Tablas} % para que aparezca en el indice de contenidos
+\listoftables
+
+
+%--------------------------------------------
+
+
+\clearpage
+\pagenumbering{arabic}
+\setcounter{page}{1}
+
+\include{introduccion}
+
+\part{Aspectos Generales}
+\include{aspectosGenerales} 
+
+\part{Marco Teorico}
+\include{marcoTeorico}
+
+\part{Desarrollo del Proyecto}
+\include{desarrollo}
+
+
+\include{resultados}
+\renewcommand\bibname{Resultados}
+\addcontentsline{toc}{chapter}{Resultados}
+\include{conclusiones}
+\renewcommand\bibname{Conclusiones}
+\addcontentsline{toc}{chapter}{Conclusiones}
+\include{recomendaciones}
+\renewcommand\bibname{Recomendaciones}
+\addcontentsline{toc}{chapter}{Recomendaciones}
+\include{trabajosFuturos}
+\renewcommand\bibname{TrabajosFuturos}
+\addcontentsline{toc}{chapter}{Trabajos Futuros}
+
+\end{spacing}
+
+
+%----------------------bibliografia
+
+%\cleardoublepage
+\addcontentsline{toc}{chapter}{Bibliografia}
+\begin{spacing}{1.0}
+\nocite{*}
+\bibliographystyle{abbrv} % estilo de la bibliografía.
+\bibliography{bibli.bib} % yyyy.bib es el fichero donde está salvada la bibliografía.
+
+\end{spacing}
+
+
+%----------------------------------apendix
+\appendix
+
+\chapter{OTROS CONCEPTOS}
+pendiente.
+
+\chapter{TESTING}
+pendiente.
+
+\chapter{HERRAMIENTAS}
+pendiente.
+
+\chapter{GLOSARIO}
+pendiente.
+
+\chapter{ACRONIMOS}
+pendiente.
+
+%-------------------------------
+
+\end{document}
