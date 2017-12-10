@@ -1,12 +1,27 @@
 \chapter*{Introduccion}
-Las expresiones faciales son un medio de información no verbal, útil para entender a las personas en situaciones específicas. Para un ser humano el reconocer una expresión facial es una tarea fácil, pero no lo es para un sistema automatizado basado en visión por computador.
-Para reconocer una expresión facial, necesitamos detectar el rostro y reconocer que expresión facial que posee.
-En el presente trabajo se usa el detector de rostros \textit{Haar Cascade} para la deteccion y Red Neuronal Convolucional(CNN) para el reconocimiento de la expresión facial. Se usó 3 bases de datos (FER2013 y CK+) y una tercera base de datos como resultado de la unión de las 2 bases de datos antes mencionadas.\\
+Uno de los razgos psicologicos naturales de los seres humanos es la necesidad de interaccion entre ellos. La interaccion puede darse atravez de la comunicacion. Propio de este, es generada y obtenida informacion que ellos usan para tomar decisiones durante el proceso de comunicacion. Actualmente, gracias al gran avance tecnologico vivimos en una era digital que, posibilito la trascendencia de la comunicacion directa a la comunicación indirecta masiva atravez de las redes sociales, videoconferencias, etc. Producto de ello, la cantidad de datos (imagenes, videos, textos, etc) generada por minuto en internet es exorbitante. Surgiendo muchas potenciales aplicaciones (reconocimiento de expresiones faciales, reconocimiento de objetos, deteccion de objetos, etc) que implican el analisis de imagenes y/o videos por computador. 
+
+Las expresiones faciales juega un rol importante en la comunicacion no verbal entre los seres humanos, ademas de ser el medio por el que se transmite mas del 55\% de informacion en el proceso  de comunicacion. Para el reconocimiento de las expresion facial por medio del computador son diseñados modelos basados en la apariencia y modelos geometricos del rostro humano.
+Asi, en este trabajo abordamos el reconocimiento de expresiones faciales como un problema de clasificacion de imagenes de rostros humanos clasificados en 6 categorias (alegre, neutro, feliz, triste, enojado, sorpresa) basados en la apariencia del rostro.
+
+La metodologia propuesta  para abordar el problema de reconocimiento de expresiones faciales en imagenes es compuesta por 3 partes. La primera parte, comprende la estandarizacion y la normalizacion de las imagenes. En la estandarización las imagenes son redimensionadas a un tamaño estandar y convertidas a tonos de cinza. La normalizacion es aplicada para reducir la varianza en las imagenes. Para ambos casos se usa métodos y técnicas de procesamiento de imagenes. En la segunda parte, se extrae las caracteristicas del rostro y se clasifica en las diferentes clases de expresiones faciales (alegre, neutro, feliz, triste, enojado, sorpresa). Para ello, se diseña un conjunto de arquitecturas de Redes Neuronales Convolucionales (CNNs) usando técnicas de tuneamiento. Finalmente, se evalua el modelo con mayor rendimiento en 3 base de datos publicos de expresiones faciales (FER2013, CK+) y un adicional creado a partir de la union de los dos antes mencionados (Fer2013-CK+). 
+
+Adicionalmente, para comprobar el funcionamiento del modelo en imagenes del mundo real, un pequeño conjunto de imagenes de internet es seleccionado por nosotros. Estas imagenes possen contenidos variados desde imagenes de animes, rostros con oclusion hasta imagenes con fondo complejo. Primero, es extraido el rostro humano via el detector de rostros \textit{Haar cascade} y posteriormente es reconocido su correspondiente expresion facial usando el modelo creado anteriormente.
+
+El desarrollo del presente trabajo puede resumirse en 3 partes.
 
 \begin{itemize}
 \item \textbf{Parte I:} Cubre los aspectos generales del problema, describiendo de una manera detallada el problema al cual se quiere dar solucion, los trabajos relacionados, los objetivos a alcanzar, la metodologia y las limitaciones encontradas en el desarrollo de la investigacion.
 \item \textbf{Parte II:} Proporciona los fundamentos teóricos necesarios que son vitales para el desarrollo y entendimiento del proyecto.
 \item \textbf{Parte III:} Desarrolla y muestra los experimentos realizados con diferentes configuraciones sobre una arquitectura de Red Neuronal Convolucional(CNN). Se describe a detalles el funcionamiento de los metodos elegidos para la deteccion y el reconocimiento de expresiones faciales. Los resultados obtenidos son interpretados en terminos de una metrica de error y precision, y se proponen trabajos futuros.
+
+
+ %Parte III
+ %Describe el desarrollo del metodo propuesto, asi como los experimentos realizados en las diferentes configuraciones de las arquitecturas de Redes Neurales convolucionales (CNNs) propuestas. Se describe a detalle el funcionamiento del metodo de clasificacion de expresiones faciales. Los resultados obtenidos son interpretados basados en el error y precision del modelo en las diferentes bases de datos de expresiones faciales. Por ultimo las conclusiones, recomendaciones y trabajos futuros son mostrados.
+ 
+ % Para la aplicacion adicional descrita anteriormente, se describe detalladamente el funcionamiento del metodo de deteccion de rostros. 
+ 
+  
 \end{itemize}
 
 

@@ -1,0 +1,54 @@
+\select@language {spanish}
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Estructura de la percepci\IeC {\'o}n visual humana.\relax }}{13}{figure.caption.10}
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Esquema de las relaciones entre la visi\IeC {\'o}n por computadora y otras \IeC {\'a}reas afines.\relax }}{14}{figure.caption.11}
+\contentsline {figure}{\numberline {2.3}{\ignorespaces Detecci\IeC {\'o}n Cascade.\relax }}{15}{figure.caption.12}
+\contentsline {figure}{\numberline {2.4}{\ignorespaces Neurona biol\IeC {\'o}gica\relax }}{16}{figure.caption.13}
+\contentsline {figure}{\numberline {2.5}{\ignorespaces Modelo matem\IeC {\'a}tico de una red neuronal\relax }}{18}{figure.caption.14}
+\contentsline {figure}{\numberline {2.6}{\ignorespaces Capas de una red neuronal artificial.\relax }}{18}{figure.caption.15}
+\contentsline {figure}{\numberline {2.7}{\ignorespaces Grafica de la funci\IeC {\'o}n Sigmoide\relax }}{19}{figure.caption.16}
+\contentsline {figure}{\numberline {2.8}{\ignorespaces Grafica de la funci\IeC {\'o}n Tangencial\relax }}{20}{figure.caption.17}
+\contentsline {figure}{\numberline {2.9}{\ignorespaces Grafica de la funci\IeC {\'o}n RELU\relax }}{21}{figure.caption.18}
+\contentsline {figure}{\numberline {2.10}{\ignorespaces Arquitectura de un RNA incluida el sesgo\relax }}{21}{figure.caption.19}
+\contentsline {figure}{\numberline {2.11}{\ignorespaces Descenso de gradiente.\relax }}{23}{figure.caption.20}
+\contentsline {figure}{\numberline {2.12}{\ignorespaces Tipos de aprendizaje.\relax }}{23}{figure.caption.21}
+\contentsline {figure}{\numberline {2.13}{\ignorespaces Aprendizaje supervisado.\relax }}{24}{figure.caption.22}
+\contentsline {figure}{\numberline {2.14}{\ignorespaces Aprendizaje no supervisado.\relax }}{24}{figure.caption.23}
+\contentsline {figure}{\numberline {2.15}{\ignorespaces Arquitectura de una red neuronal Auto-encoder.\relax }}{25}{figure.caption.24}
+\contentsline {figure}{\numberline {2.16}{\ignorespaces Arquitectura de una red neuronal Recurrente.\relax }}{26}{figure.caption.25}
+\contentsline {figure}{\numberline {2.17}{\ignorespaces Arquitectura de una red neuronal Convolucional.\relax }}{27}{figure.caption.26}
+\contentsline {figure}{\numberline {2.18}{\ignorespaces Ejemplo de convoluci\IeC {\'o}n con un filtro de dimensiones de 2$\times $2.\relax }}{28}{figure.caption.27}
+\contentsline {figure}{\numberline {2.19}{\ignorespaces Ejemplo de Submuestreo con una ventana de 2X2 y calculando el promedio\relax }}{30}{figure.caption.28}
+\contentsline {figure}{\numberline {2.20}{\ignorespaces Capa totalmente conectada\relax }}{31}{figure.caption.29}
+\contentsline {figure}{\numberline {2.21}{\ignorespaces Arquitectura de una CNN con Softmax\relax }}{32}{figure.caption.30}
+\contentsline {figure}{\numberline {2.22}{\ignorespaces Expresi\IeC {\'o}n Facial de C\IeC {\'o}lera\relax }}{33}{figure.caption.31}
+\contentsline {figure}{\numberline {2.23}{\ignorespaces Expresi\IeC {\'o}n Facial de Felicidad\relax }}{34}{figure.caption.32}
+\contentsline {figure}{\numberline {2.24}{\ignorespaces Expresi\IeC {\'o}n Facial de Sorpresa\relax }}{34}{figure.caption.33}
+\contentsline {figure}{\numberline {2.25}{\ignorespaces Expresi\IeC {\'o}n Facial de Asco\relax }}{35}{figure.caption.34}
+\contentsline {figure}{\numberline {2.26}{\ignorespaces Expresi\IeC {\'o}n Facial de Tristeza\relax }}{35}{figure.caption.35}
+\contentsline {figure}{\numberline {2.27}{\ignorespaces Expresi\IeC {\'o}n Facial de Miedo\relax }}{35}{figure.caption.36}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Imagen de Entrada\relax }}{38}{figure.caption.37}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Proceso de detecci\IeC {\'o}n de rostro\relax }}{38}{figure.caption.38}
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Im\IeC {\'a}genes despu\IeC {\'e}s de la primera convoluci\IeC {\'o}n.\relax }}{42}{figure.caption.46}
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Im\IeC {\'a}genes despu\IeC {\'e}s del primer Pooling.\relax }}{42}{figure.caption.47}
+\contentsline {figure}{\numberline {3.5}{\ignorespaces Im\IeC {\'a}genes despu\IeC {\'e}s de la segunda convoluci\IeC {\'o}n.\relax }}{42}{figure.caption.48}
+\contentsline {figure}{\numberline {3.6}{\ignorespaces Im\IeC {\'a}genes despu\IeC {\'e}s del segundo Pooling.\relax }}{43}{figure.caption.49}
+\contentsline {figure}{\numberline {3.7}{\ignorespaces Arquitectura grafica del modelo propuesto\relax }}{44}{figure.caption.51}
+\contentsline {figure}{\numberline {3.8}{\ignorespaces Im\IeC {\'a}genes de la base de datos FER2013\relax }}{46}{figure.caption.52}
+\contentsline {figure}{\numberline {3.9}{\ignorespaces Im\IeC {\'a}genes de la base de datos CK+\relax }}{46}{figure.caption.53}
+\contentsline {figure}{\numberline {3.10}{\ignorespaces Matriz de confusi\IeC {\'o}n, precisi\IeC {\'o}n del Test - FER2013\relax }}{47}{figure.caption.55}
+\contentsline {figure}{\numberline {3.11}{\ignorespaces Precisi\IeC {\'o}n durante el proceso de entrenamiento y prueba (\%) \IeC {\textendash } FER2013\relax }}{47}{figure.caption.56}
+\contentsline {figure}{\numberline {3.12}{\ignorespaces Perdida durante el proceso de entrenamiento y prueba (\%) \IeC {\textendash } FER2013\relax }}{48}{figure.caption.57}
+\contentsline {figure}{\numberline {3.13}{\ignorespaces Matriz de confusi\IeC {\'o}n, precisi\IeC {\'o}n del Test - CK+\relax }}{48}{figure.caption.59}
+\contentsline {figure}{\numberline {3.14}{\ignorespaces Precisi\IeC {\'o}n durante el proceso de entrenamiento y prueba (\%) - CK+\relax }}{49}{figure.caption.60}
+\contentsline {figure}{\numberline {3.15}{\ignorespaces Perdida durante el proceso de entrenamiento y prueba (\%) \IeC {\textendash } FER2013\relax }}{49}{figure.caption.61}
+\contentsline {figure}{\numberline {3.16}{\ignorespaces Matriz de confusi\IeC {\'o}n, precisi\IeC {\'o}n del Test FER2013 - CK+\relax }}{50}{figure.caption.63}
+\contentsline {figure}{\numberline {3.17}{\ignorespaces Precisi\IeC {\'o}n durante el proceso de entrenamiento y prueba (\%) FER2013 - CK+\relax }}{50}{figure.caption.64}
+\contentsline {figure}{\numberline {3.18}{\ignorespaces Perdida durante el proceso de entrenamiento y prueba (\%) FER2013 - CK+\relax }}{50}{figure.caption.65}
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }

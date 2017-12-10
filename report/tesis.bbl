@@ -1,0 +1,198 @@
+\begin{thebibliography}{10}
+
+\bibitem{14alonso2005personas}
+M.~Alonso, A.~D{\'\i}az, M.~Alonso, and A.~Aguado.
+\newblock {\em Personas con discapacidad: perspectivas psicopedag{\'o}gicas y
+  rehabilitadoras}.
+\newblock Manuales (Siglo XXI de Espa{\~n}a Editores).: Psicolog{\'\i}a. Siglo
+  XXI de Espa{\~n}a, 2005.
+
+\bibitem{17bengio2013representation}
+Y.~Bengio, A.~Courville, and P.~Vincent.
+\newblock Representation learning: A review and new perspectives.
+\newblock {\em IEEE transactions on pattern analysis and machine intelligence},
+  35(8):1798--1828, 2013.
+
+\bibitem{4ciregan2012multi}
+D.~Ciregan, U.~Meier, and J.~Schmidhuber.
+\newblock Multi-column deep neural networks for image classification.
+\newblock In {\em Computer Vision and Pattern Recognition (CVPR), 2012 IEEE
+  Conference on}, pages 3642--3649. IEEE, 2012.
+
+\bibitem{13clark2015training}
+C.~Clark and A.~Storkey.
+\newblock Training deep convolutional neural networks to play go.
+\newblock In {\em International Conference on Machine Learning}, pages
+  1766--1774, 2015.
+
+\bibitem{22RedesNeuronalesConvolu}
+{CS231n}.
+\newblock {Convolutional Neural Network for Visual Recognition}.
+\newblock \url{http://cs231n.github.io/convolutional-networks/#norm}, 2016.
+\newblock Last access: 2016-07-13.
+
+\bibitem{32Stopping}
+{deeplearning4j}.
+\newblock {Early Stopping}.
+\newblock \url{https://deeplearning4j.org/earlystopping#early-stopping}, 2016.
+\newblock Last access: 2016-10-30.
+
+\bibitem{5deng2009imagenet}
+J.~Deng, W.~Dong, R.~Socher, L.-J. Li, K.~Li, and L.~Fei-Fei.
+\newblock Imagenet: A large-scale hierarchical image database.
+\newblock In {\em Computer Vision and Pattern Recognition, 2009. CVPR 2009.
+  IEEE Conference on}, pages 248--255. IEEE, 2009.
+
+\bibitem{29ekman2016scientists}
+P.~Ekman.
+\newblock What scientists who study emotion agree about.
+\newblock {\em Perspectives on Psychological Science}, 11(1):31--34, 2016.
+
+\bibitem{7fei2007learning}
+L.~Fei-Fei, R.~Fergus, and P.~Perona.
+\newblock Learning generative visual models from few training examples: An
+  incremental bayesian approach tested on 101 object categories.
+\newblock {\em Computer vision and Image understanding}, 106(1):59--70, 2007.
+
+\bibitem{9griffin2007caltech}
+G.~Griffin, A.~Holub, and P.~Perona.
+\newblock Caltech-256 object category dataset.
+\newblock 2007.
+
+\bibitem{10houben2013detection}
+S.~Houben, J.~Stallkamp, J.~Salmen, M.~Schlipsing, and C.~Igel.
+\newblock Detection of traffic signs in real-world images: The german traffic
+  sign detection benchmark.
+\newblock In {\em Neural Networks (IJCNN), The 2013 International Joint
+  Conference on}, pages 1--8. IEEE, 2013.
+
+\bibitem{31MLApplications}
+{Intelygenz}.
+\newblock {Machine Learning and aplication}.
+\newblock
+  \url{http://www.intelygenz.es/que-es-machine-learning-y-que-aplicaciones-tiene-dia-a-dia/},
+  2016.
+\newblock Last access: 2016-10-27.
+
+\bibitem{21RedesNeuronales}
+{José Rosales Fernández}.
+\newblock {Redes Neuronales}.
+\newblock
+  \url{http://www.usmp.edu.pe/publicaciones/boletin/fia/info32/pag4.htm}, 2016.
+\newblock Last access: 2016-09-11.
+
+\bibitem{8krizhevsky2012imagenet}
+A.~Krizhevsky, I.~Sutskever, and G.~E. Hinton.
+\newblock Imagenet classification with deep convolutional neural networks.
+\newblock In {\em Advances in neural information processing systems}, pages
+  1097--1105, 2012.
+
+\bibitem{2lecun1998gradient}
+Y.~LeCun, L.~Bottou, Y.~Bengio, and P.~Haffner.
+\newblock Gradient-based learning applied to document recognition.
+\newblock {\em Proceedings of the IEEE}, 86(11):2278--2324, 1998.
+
+\bibitem{27lehr1993backpropagation}
+B.~W. M.~A. Lehr.
+\newblock Backpropagation and its applications.
+\newblock In {\em Neural Network Computing for the Electric Power Industry:
+  Proceedings of the 1992 INNS Summer Workshop}, page~21. Psychology Press,
+  1993.
+
+\bibitem{20padilla2012evaluation}
+R.~Padilla, C.~Costa~Filho, and M.~Costa.
+\newblock Evaluation of haar cascade classifiers designed for face detection.
+\newblock {\em World Academy of Science, Engineering and Technology}, 64, 2012.
+
+\bibitem{16pusiol2014redes}
+P.~D. Pusiol.
+\newblock Redes convolucionales en comprensi{\'o}n de escenas.
+\newblock {B.S.} thesis, 2014.
+
+\bibitem{18restrepo2015aplicacion}
+G.~J.~P. Restrepo~Arteaga et~al.
+\newblock Aplicaci{\'o}n del aprendizaje profundo (deep learning) al
+  procesamiento de se{\~n}ales digitales.
+\newblock {B.S.} thesis, Universidad Aut{\'o}noma de Occidente, 2015.
+
+\bibitem{6russakovsky2015imagenet}
+O.~Russakovsky, J.~Deng, H.~Su, J.~Krause, S.~Satheesh, S.~Ma, Z.~Huang,
+  A.~Karpathy, A.~Khosla, M.~Bernstein, et~al.
+\newblock Imagenet large scale visual recognition challenge.
+\newblock {\em International Journal of Computer Vision}, 115(3):211--252,
+  2015.
+
+\bibitem{19sabino1994hacer}
+C.~Sabino.
+\newblock Como hacer una tesis y elaborar todo tipo de escritos.
+\newblock {\em Editorial Panapo. Venezuela}, 1994.
+
+\bibitem{12sermanet2011traffic}
+P.~Sermanet and Y.~LeCun.
+\newblock Traffic sign recognition with multi-scale convolutional networks.
+\newblock In {\em Neural Networks (IJCNN), The 2011 International Joint
+  Conference on}, pages 2809--2813. IEEE, 2011.
+
+\bibitem{23silva2001metodologia}
+E.~L.~d. Silva and E.~M. Menezes.
+\newblock Metodologia da pesquisa e elabora{\c{c}}{\~a}o de
+  disserta{\c{c}}{\~a}o.
+\newblock 2001.
+
+\bibitem{11stallkamp2012man}
+J.~Stallkamp, M.~Schlipsing, J.~Salmen, and C.~Igel.
+\newblock Man vs. computer: Benchmarking machine learning algorithms for
+  traffic sign recognition.
+\newblock {\em Neural networks}, 32:323--332, 2012.
+
+\bibitem{1sucar2011vision}
+L.~E. Sucar and G.~G{\'o}mez.
+\newblock Visi{\'o}n computacional.
+\newblock {\em Instituto Nacional de Astrof{\'\i}sica, {\'O}ptica y
+  Electr{\'o}nica. M{\'e}xico}, 2011.
+
+\bibitem{28fAutoencoder}
+{Wikipedia}.
+\newblock {Autoencoder}.
+\newblock \url{https://en.wikipedia.org/wiki/Autoencoder}, 2016.
+\newblock Last access: 2016-10-22.
+
+\bibitem{30Mconfusion}
+{Wikipedia}.
+\newblock {Confusion Matrix}.
+\newblock \url{https://en.wikipedia.org/wiki/Confusion_matrix}, 2016.
+\newblock Last access: 2016-10-26.
+
+\bibitem{26fRelu}
+{Wikipedia}.
+\newblock {Función de activación Relu}.
+\newblock \url{https://en.wikipedia.org/wiki/Rectifier_(neural_networks)},
+  2016.
+\newblock Last access: 2016-10-20.
+
+\bibitem{24fsigmoide}
+{Wikipedia}.
+\newblock {Función de activación Sigmoide}.
+\newblock \url{https://es.wikipedia.org/wiki/Funci%C3%B3n_sigmoide}, 2016.
+\newblock Last access: 2016-10-20.
+
+\bibitem{25ftangencial}
+{Wikipedia}.
+\newblock {Función de activación tangencial}.
+\newblock \url{https://es.wikipedia.org/wiki/Tangente_hiperb%C3%B3lica}, 2016.
+\newblock Last access: 2016-10-20.
+
+\bibitem{15VC}
+{Wikipedia}.
+\newblock {Visión por computador}.
+\newblock
+  \url{https://es.wikipedia.org/wiki/Visi%C3%B3n_artificial#cite_note-1}, 2016.
+\newblock Last access: 2016-08-01.
+
+\bibitem{3Mnist}
+{Y. LeCun, C. Cortes, y C. Burges.}
+\newblock {Mnist: A dataset of handwritten digits}.
+\newblock \url{http://yann.lecun.com/exdb/mnist/}, 2014.
+\newblock Last access: 2016-10-01.
+
+\end{thebibliography}

@@ -1,0 +1,61 @@
+This is BibTeX, Version 0.99d (TeX Live 2013/Debian)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: tesis.aux
+A level-1 auxiliary file: dedicatoria.aux
+A level-1 auxiliary file: resumen.aux
+A level-1 auxiliary file: abstract.aux
+A level-1 auxiliary file: introduccion.aux
+A level-1 auxiliary file: aspectosGenerales.aux
+A level-1 auxiliary file: marcoTeorico.aux
+A level-1 auxiliary file: desarrollo.aux
+A level-1 auxiliary file: resultados.aux
+A level-1 auxiliary file: conclusiones.aux
+A level-1 auxiliary file: recomendaciones.aux
+A level-1 auxiliary file: trabajosFuturos.aux
+The style file: abbrv.bst
+Database file #1: bibli.bib.bib
+Warning--empty journal in 9griffin2007caltech
+Warning--empty school in 16pusiol2014redes
+Warning--empty journal in 23silva2001metodologia
+You've used 32 entries,
+            2118 wiz_defined-function locations,
+            689 strings with 9631 characters,
+and the built_in function-call counts, 10232 in all, are:
+= -- 1030
+> -- 466
+< -- 7
++ -- 186
+- -- 154
+* -- 594
+:= -- 1691
+add.period$ -- 113
+call.type$ -- 32
+change.case$ -- 172
+chr.to.int$ -- 0
+cite$ -- 35
+duplicate$ -- 382
+empty$ -- 822
+format.name$ -- 154
+if$ -- 2191
+int.to.chr$ -- 0
+int.to.str$ -- 32
+missing$ -- 20
+newline$ -- 174
+num.names$ -- 64
+pop$ -- 230
+preamble$ -- 1
+purify$ -- 139
+quote$ -- 0
+skip$ -- 295
+stack$ -- 0
+substring$ -- 522
+swap$ -- 98
+text.length$ -- 7
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 126
+warning$ -- 3
+while$ -- 95
+width$ -- 34
+write$ -- 363
+(There were 3 warnings)
