@@ -17,45 +17,45 @@ Database file #1: bibli.bib.bib
 Warning--empty journal in 9griffin2007caltech
 Warning--empty school in 16pusiol2014redes
 Warning--empty journal in 23silva2001metodologia
-You've used 32 entries,
+You've used 36 entries,
             2118 wiz_defined-function locations,
-            689 strings with 9631 characters,
-and the built_in function-call counts, 10232 in all, are:
-= -- 1030
-> -- 466
-< -- 7
-+ -- 186
-- -- 154
-* -- 594
-:= -- 1691
-add.period$ -- 113
-call.type$ -- 32
-change.case$ -- 172
+            710 strings with 10652 characters,
+and the built_in function-call counts, 12287 in all, are:
+= -- 1241
+> -- 568
+< -- 11
++ -- 228
+- -- 190
+* -- 729
+:= -- 1996
+add.period$ -- 129
+call.type$ -- 36
+change.case$ -- 202
 chr.to.int$ -- 0
-cite$ -- 35
-duplicate$ -- 382
-empty$ -- 822
-format.name$ -- 154
-if$ -- 2191
+cite$ -- 39
+duplicate$ -- 470
+empty$ -- 976
+format.name$ -- 190
+if$ -- 2656
 int.to.chr$ -- 0
-int.to.str$ -- 32
-missing$ -- 20
-newline$ -- 174
-num.names$ -- 64
-pop$ -- 230
+int.to.str$ -- 36
+missing$ -- 24
+newline$ -- 194
+num.names$ -- 72
+pop$ -- 273
 preamble$ -- 1
-purify$ -- 139
+purify$ -- 165
 quote$ -- 0
-skip$ -- 295
+skip$ -- 361
 stack$ -- 0
-substring$ -- 522
-swap$ -- 98
-text.length$ -- 7
+substring$ -- 644
+swap$ -- 138
+text.length$ -- 11
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 126
+type$ -- 142
 warning$ -- 3
-while$ -- 95
-width$ -- 34
-write$ -- 363
+while$ -- 113
+width$ -- 38
+write$ -- 411
 (There were 3 warnings)

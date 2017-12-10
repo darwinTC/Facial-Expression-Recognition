@@ -14,66 +14,68 @@ Las técnicas tradicionales para el reconocimiento de expresiones faciales usada
 Se muestra una lista de trabajos resaltantes que hacen uso de tecnicas de \textit{Deep Learning}, los cuales sirvieron de inspiración y fuente de información valiosa en el desarrollo de este trabajo. Tambien se presentan trabajos dedicados al reconocimiento de expresiones faciales utilizando tecnicas tradicionales de vision por computador y \textit{machine learning}.
 
 \vspace{1cm}
-\textbf{“Gradient-Based Learning Applied to Document Recognition” \cite{2lecun1998gradient}}\\
-\textbf{Descripción:}\\
+\textbf{“Image based Static Facial Expression Recognition with Multiple Deep Network Learning” \cite{yu2015image}}\\
+%\textbf{Descripción:}\\
 
 \begin{itemize}
-\item Este proyecto muestra uno de los inicios en lo que respecta al aprendizaje profundo con Redes Neuronales Convolucionales
-\item Este proyecto utiliza la data set MNIST, la función de activación no lineal tanh(x) y el promedio aritmético para la parte del Submuestreo y obtuvo un 99.3% de precisión.
-\item Este proyecto utiliza un paradigma de aprendizaje denominada “Redes transformadoras de gráfico”, tal sistema permite entrenar varios módulos basado en el gradiente, con el fin de minimizar la medida del rendimiento global.
+\item En este trabajo, es propuesto un detector de rostros y un clasificador de expresiones faciales en imagenes.
+\item Para la deteccion de rostros en las imagenes, es usado un conjunto de tres detectores de rostros del estado del arte. 
+\item Para el reconocimiento de las expresiones faciales, es creado un clasificador basado en un conjunto de 
+Redes Neuronales Convolucionales(CNNs).
+\item El modelo creado es evaluado en en la base de datos publico SFEW 2.0, logrando resultados del estado del arte.
+\item Los resultados obtenidos en este trabajo
+son 55.96 \% y 61.29 \% en el conjunto de datos de validacion y test respectivamente de la base de datos SFEW 2.0.
 \end{itemize}
-\textbf{Objetivo:} Reconocer documentos manuscritos\\
-\textbf{Conclusión:} La utilización de Gradient Based learning permitió alcanzar altos niveles de precisión en el reconocimiento de documentos manuscritos, dando más relevancia al Deep Learning.\\
 
-
-\textbf{“Traffic Sign Recognition with Multi-Scale Convolutional Networks” \cite{12sermanet2011traffic}}\\
-\textbf{Descripción:}\\
+\textbf{“A Facial Expression Recognition System Using
+Convolutional Networks” \cite{lopes2015facial}}\\
 
 \begin{itemize}
-\item Este trabajo se hizo como parte de la competencia GTSRB.
-\item En este trabajo se aplican Redes Neuronales Convolucionales en la tarea de clasificación de señales de tráfico, estas Redes Neuronales Convolucionales aprenden características en todos los niveles de su arquitectura.
-\item Este trabajo produjo una precisión de 98.31\% durante la competición estando por debajo con 0.53\% de diferencia respecto al rendimiento humano que es del 98.81\%.
+\item En este trabajo, los autores proponen combinar metodos de pre-procesamiento de imagenes y Redes Neuronales Convolucionales para el reconocimiento de expresiones faciales.
+\item En el paso de pre-procesamiento  las imagenes de entrada son normalizados espacialmente. asi tambien, la intensidad de los pixels son normalizados y como ultimo es recortada la region de la imagen que contiene solo el rostro humano.
+\item Para reconocer las expresiones faciales es usado una arquitectura de Red Neural Convolucional.
+\item  Prueban que las operaciones de pre-procesamiento tienen un impacto directo en el rendimiento del clasificador CNN.
+
+\item Para la creacion del clasificador hacen uso de una GPU de 1.5GB.
+\item Este trabajo es evaluado en la base de datos CK+.
+
+\item Los resultados obtenidos alcanzan un nivel de precision del 97.81 \% .
+ 
 \end{itemize}
-\textbf{Objetivo:} Reconocer señales de transito\\
-\textbf{Conclusión:} Las Redes Convolucionales Multi - Escalas son mejores en el reconocimiento de señales de transito a comparación con la mayoria de técnicas tradicionales\\
 
 
 
-
-\textbf{“Multi-column Deep Neural Networks for Image Classification” \cite{4ciregan2012multi}}\\
-\textbf{Descripción:}\\
+\textbf{“A Real-time Facial Expression Recognizer using Deep
+Neural Network” \cite{jeon2016real}}\\
 
 \begin{itemize}
-\item Este paper menciona que los métodos tradicionales de visión por ordenador y Machine Learning no podían igualar el rendimiento humano en tareas tales como el reconocimiento de dígitos escritos a mano o señales de tráfico. 
-\item Este paper menciona que se crean varias columnas neuronales profundas, que se convierten en expertos en áreas específicas de las entradas pre-procesadas. Este método es el primero en lograr un rendimiento casi humano. 
-\item Este paper menciona que se crean varias columnas neuronales profundas, que se convierten en expertos en áreas específicas de las entradas pre-procesadas. Este método es el primero en lograr un rendimiento casi humano. 
-\item En este proyecto logra una precisión del 99.46\% en el reconocimiento de señales de tráfico superando a su predecesor por un 0.24\% y logrando un rendimiento superior al humano por 0.62\%.
+\item En este trabajo, es propuesto un  clasificador de expresiones faciales en tiempo real.
+\item Primero, es detectado el rostro humano en las imagenes usando \textit{HOG feature descriptor}.
+\item Segundo, es usado un metodo para el seguimiento del rostro basado en un rastreador de correlación.
+\item Por último, es reconocido la expresion facial usando un modelo de Red Neuronal Convolucional.
+\item Para la creacion del clasificador usan una GPU con 768 cores.
+\item El modelo propuesto en este trabajo es evaluado en base de datos publico FER2013.
+\item Los resultados obtenidos por el  modelo en la base de datos FER2013  alcanzan un nivel de precision de  70.74\%
+\item Adicionalmente, el modelo evalua 9.1 fps.
 \end{itemize}
-\textbf{Objetivo:} Evaluar el rendimiento de las Redes Neuronales Profundas Multi-Columnas en la clasificación de imágenes.\\
-\textbf{Conclusión:} Las Redes Convolucionales Multi - Escalas son mejores en el reconocimiento de señales de transito a comparación con la mayoria de técnicas tradicionales.\\
 
 
-\textbf{“ImageNet Clasificación with Deep Convolutional Neuronal Networks” \cite{8krizhevsky2012imagenet}}\\
-\textbf{Descripción:}\\
+
+\textbf{“Real-time Personalized Facial Expression
+Recognition System
+Based on Deep Learning” \cite{lee2016real}}\\
 
 \begin{itemize}
-\item En este proyecto se unas ImageNet, que es una data set compuesto de más de 100.000 categorías con cerca de 1.2TB de iimágenes, desarrollada por el laboratorio de visión de la Universidad de Stanford.
-\item Este proyecto crea un modelo basado en los trabajos desarrollados hasta ese momento referente a Redes Neuronales Convolucionales logrando bajar el error de $\pm$ 25\% a $\pm$ 15\%. Su modelo consistía en 650K neuronas, 832M de sinapsis y 60M de parámetros. El entrenamiento de su modelo se realizó con 2 GPU’s durante el tiempo de 1 semana.
+\item En este trabajo, es propuesto un clasificador de expresiones faciales en tiempo real usando una camara web en un sistema personalizado que contiene personas identificadas por un ID.
+\item El modelo propuesto logra detectar y reconocer expresiones faciales de personas a una distancia de 2~3m en un entorno para  television.
+\item Un modelo CNN inicial es entrenado usando la base de datos FER2013.
+\item Los pesos obtenidos en la fase de entrenamiento del modelo inicial son usados para la inicializacion del modelo CNN personalizada.
+\item Un conjunto de 200 imagenes por persona identificada en el sistema es recolectado.
+\item Por medio de transformaciones del conjunto imagenes de cada persona identificada en el sistema es obtenido un total de 2400 imagenes por persona.
+\item La CNN personalizada es entrenada en el conjunto de imagenes por persona que fue obtenida por medio de las transformaciones.
+\item El modelo CNN personalizada logra un resultado del 96 \% de precision a una distancia de 3m en el conjunto de personas identificadas en el sistema.
+
 \end{itemize}
-\textbf{Objetivo:} Clasificación de imágenes de la base de datos ImageNet en más de 1000 categorías, utilizando Redes Neuronales Convolucionales.\\
-\textbf{Conclusión:} Las Redes Neuronales Convolucionales logran alto nivel de precisión gracias a la gran cantidad de datos en la fase de entrenamiento y a la utilización de GPU's\\
-
-
-
-
-\textbf{“Teaching Deep Convolutional Neural Network to Play Go” \cite{13clark2015training}}\\
-\textbf{Descripción:}\\
-
-\begin{itemize}
-\item Este trabajo logra desarrollar una Red Neuronal Convolucional, que es capaz de lograr precisión de predicción de una posición de una pieza de 41.1\% y 44.4\% en los diferentes conjuntos de datos de Go superando anteriores técnicas del estado del arte en esta tarea por márgenes significativos.
-\end{itemize}
-\textbf{Objetivo:} Crear un programa capaz de jugar a Go mediante Deep Learning.\\
-\textbf{Conclusión:} Las Redes Neuronales Convolucionales no solo sirven para la visión por computador, sino también son muy útiles para la teoría de juegos.\\
 
 
 \section{Objetivos}
