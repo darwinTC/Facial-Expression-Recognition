@@ -1,67 +1,47 @@
-\chapter{DESARROLLO DEL DETECTOR DE ROSTRO Y LA
-ARQUITECTURA DE LA CNN}
+\chapter{Desarrollo del Detector de Rostros y la Arquitectura de Red Neuronal Convolucional}
 
-\section{DETECCIÓN DE ROSTROS}
-Para la detección de rostros se utilizó el detector Haar Cascade de la librería
-OpenCV\footnote[7]{OpenCV es una librería para visión por computador, http://opencv.org/} . El input es una imagen, el proceso consiste en detectar el rostro y extraerlo en
-el tamaño de 48x48 pixeles en escala de gris. Este será el input del modelo en la fase de
-consultas.
+\section{Detección de Rostros}
+En este trabajo se optó por utilizar como etapa inicial dentro de la fase de consultas a la red, la construcción de un detector de rostros, debido a que, al momento de desarrollar una aplicación orientada a las necesidades del mundo real, este no solo recibira como entrada imágenes que contengan exactamente el rostro de la persona, sino, imágenes con el cuerpo completo o algunas partes adicionales aparte del rostro. Sin embargo, en objetivo del trabajo es poder detectar la expresión facial de una persona, para lo cual, basta con tener como entrada a la red una imagen que delimite el rostro de la persona. De ahí, la necesidad de utilizar un algoritmo de detección de rostros para la extracción de la región de interes que posteriormente servira como entrada para la red neuronal convolucional encargada de reconocer la expresión facial correspondiente. La figura~\ref{fig:imagen_entrada} muestra un ejemplo de una imagen de entrada, en la cual, se puede observar detalles adicionales aparte del rostro(el sombrero y el fondo), los cuales no aportan carasteristicas relevantes que ayuden al reconocimiento de la expresion facial.
+
+Para esta etapa se utilizó el detector de objetos \textit{Haar Cascade}, un algoritmo muy utilizado, cuya implementación puede ser encontrado en distintas librerías orientadas al procesamiento de imágenes, tales como OpenCV\footnote[5]{OpenCV es una librería \textit{open source} que contiene algoritmo relacionados con el area de visión por computador, http://opencv.org/}. Como se describió en la sección~\ref{sec:Haar_Cascade}, este algoritmo utiliza técnicas de \textit{machine learning}. Su proceso de entrenamiento se realiza con imágenes positivas y negativas(imágenes que representan y no representan rostros), creando así un modelo capaz de detectar rostros, basandose en la detecciín de caracteristicas \textit{Haar}. La entrada para esta etapa es una imagen cualquiera, el proceso consiste en detectar el rostro en dicha imagen(en caso exista algun rostro) y extraerlo en otra imagen en escala de grises, la cual tendra un tamaño aproximado de 48x48 pixeles(dependiendo de las dimensiones del rostro). Esta última imagen será la entrada para el modelo en la fase de consultas. Nótese que para la detección de un rostro y la asignación de su respectiva expresión facial, no es necesario mantener la imagen a coloros, puesto que este no es una característica necesaria para conseguir el objetivo. La figura~\ref{fig:proceso_deteccion} muestra los pasos a seguir para la detección y extracción del rostro en una imagen.
 
 \begin{figure}[H]
 		\centering
-		\includegraphics[width=40mm]{./Imagenes/imagen_entrada.png}
-		\caption{Imagen de Entrada}
-		Source: Consuelo Ferrús, http://www.acompasando.org/orar-el-asombro/
+		\includegraphics[width=50mm]{./Imagenes/imagen_entrada.png}
+		\caption{Ejemplo de una imagen de entrada.}
+		\vspace{0.15cm}
+		\textit{Fuente: Consuelo Ferrús, http://www.acompasando.org/orar-el-asombro/}
 		\label{fig:imagen_entrada}
 \end{figure}
 
 
 \begin{figure}[H]
 		\centering
-		\includegraphics[width=120mm]{./Imagenes/proceso_deteccion.png}
-		\caption{Proceso de detección de rostro}
-		Source: Propio
+		\includegraphics[width=140mm]{./Imagenes/proceso_deteccion.png}
+		\caption{Proceso de detección de rostro.}
+		\vspace{0.15cm}
+		\textit{Fuente: Propio}
 		\label{fig:proceso_deteccion}
 \end{figure}
 
-El detector de rostros Haar Cascade es ampliamente utilizado por el nivel de
-precisión que posee [20].
+Se optó por la utilización del detector de rostros \textit{Haar Cascade}, debido a que este es ampliamente utilizado por el nivel de precisión que posee~\cite{6russakovsky2015imagenet}. Sin embargo, esta técnica aun presenta algunas fallas cuando el rostro presenta algún tipo de oclusión(figura~\ref{fig:oclussion}). Este tipo de problema tambien puede ser solucionado construyendo una red convolucional orientada a la detección o localización de rostros, o por medio de otro tipo de técnicas tradicionales basadas en la extracción de características. Debido al tiempo y bajos recursos computacionales, se opto por proponer este tipo de enfoques como trabajos futuros.
 
-\section{ARQUITECTURA PROPUESTA}
-La entrada de nuestra arquitectura consta de una imagen de 48x48 pixeles en
-escala de gris que es el resultado de la detección y recorte hecho en la fase de detección
-de rostro, seguido de una capa de 32 convoluciones con filtro de 4x4 sin solapamiento,
-luego se aplica un sub muestreo de 2x2 con función MAX \footnote[8]{Función que determina el máximo de n números.} , seguido de una capa de 64
-convoluciones con filtros de 2x2 sin solapamiento, para posteriormente aplicar un sub
-muestreo de 2x2 con función MAX, aplicada las convoluciones y sub muestreo
-procedemos a aplicar el Dropout\footnote[9]{Una forma simple de prevenir el \textit{overfitting} en Redes Neuronales..} con 20\%, seguido de dos capas de 1024 neuronas
-totalmente conectadas cada una. Finalmente, para la clasificación se aplica la función de
-normalización Softmax, que en este proyecto toma 6 clases que representa a las 6
-expresiones faciales antes mencionadas.
-\vspace{0.5cm}
-\begin{table}[H]
-    \centering
-    \includegraphics[width=50mm]{./Imagenes/tabla_arquitectura.png}
-    \caption{Arquitectura del modelo propuesto}
-    \label{tab:tabla_arquitectura}
-\end{table}
+\begin{figure}[H]
+		\centering
+		\includegraphics[width=130mm]{./Imagenes/oclussion.jpeg}
+		\caption{Ejemplo de rostros con oclusión.}
+		\vspace{0.15cm}
+		\textit{Fuente: Face Dataset, Universidad Politécnica de Catalunya.}
+		\label{fig:oclussion}
+\end{figure}
 
-\section{EXPERIMENTACIÓN EN LA ELECCIÓN DE PARÁMETROS Y CAPAS EN LA CONSTRUCCIÓN DE LA ARQUITECTURA
-CNN}
+\section{Experimentación en la Elección de Parámetros y Capas en la Construcción de la Arquitectura CNN}
 
-La creación de un modelo depende tanto de la arquitectura (número y
-orden de las capas de convolucion, capas de Pooling, capas totalmente conectadas,
-etc.) como de los parámetros de cada capa (número de filtros en la capa de
-convolucion, tamaño de los filtros, operaciones de agrupación en la capa de
-submuestreo, etc.).
+La creación de un modelo depende tanto de la arquitectura (número y orden de las capas de convolucion, capas de Pooling, capas totalmente conectadas, etc.) como de los parámetros de cada capa (número de filtros en la capa de convolucion, tamaño de los filtros, operaciones de agrupación en la capa de submuestreo, etc.).
 
-\textbf{¿Por qué esta configuración de capas y parámetros?} Para la elección de las
-capas y parámetros, se hizo experimentos con distintas configuraciones en la
-arquitectura, seleccionando las capas y parámetros da cada una de ellas mediante
-prueba y error, evaluando el error y precisión de cada configuración.
+\textbf{¿Por qué esta configuración de capas y parámetros?} Para la elección de las capas y parámetros, se hizo experimentos con distintas configuraciones en la arquitectura, seleccionando las capas y parámetros da cada una de ellas mediante prueba y error, evaluando el error y precisión de cada configuración.
 
-Se evaluaron 3 arquitecturas con distintas configuraciones de capas y parámetros
-en las bases de datos FER2013 y CK+.
+Se evaluaron 3 arquitecturas con distintas configuraciones de capas y parámetros en las bases de datos FER2013 y CK+.
 
 
 
@@ -121,6 +101,24 @@ en las bases de datos FER2013 y CK+.
 
 \end{itemize}
 
+\section{Arquitectura Propuesta}
+La entrada de nuestra arquitectura consta de una imagen de 48x48 pixeles en
+escala de gris que es el resultado de la detección y recorte hecho en la fase de detección
+de rostro, seguido de una capa de 32 convoluciones con filtro de 4x4 sin solapamiento,
+luego se aplica un sub muestreo de 2x2 con función MAX \footnote[6]{Función que determina el máximo de n números.} , seguido de una capa de 64
+convoluciones con filtros de 2x2 sin solapamiento, para posteriormente aplicar un sub
+muestreo de 2x2 con función MAX, aplicada las convoluciones y sub muestreo
+procedemos a aplicar el Dropout\footnote[7]{Una forma simple de prevenir el \textit{overfitting} en Redes Neuronales..} con 20\%, seguido de dos capas de 1024 neuronas
+totalmente conectadas cada una. Finalmente, para la clasificación se aplica la función de
+normalización Softmax, que en este proyecto toma 6 clases que representa a las 6
+expresiones faciales antes mencionadas.
+\vspace{0.5cm}
+\begin{table}[H]
+    \centering
+    \includegraphics[width=50mm]{./Imagenes/tabla_arquitectura.png}
+    \caption{Arquitectura del modelo propuesto}
+    \label{tab:tabla_arquitectura}
+\end{table}
 
 \section{DESCRIPCIÓN DE LAS CAPAS DE LA ARQUITECTURA}
 La arquitectura de Red Neuronal Convolucional sigue la siguiente composición:
