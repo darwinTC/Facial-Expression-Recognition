@@ -37,11 +37,12 @@ Se optó por la utilización del detector de rostros \textit{Haar Cascade}, debi
 
 \section{Experimentación en la Elección de Parámetros y Capas en la Construcción de la Arquitectura CNN}
 
-La creación de un modelo depende tanto de la arquitectura (número y orden de las capas de convolucion, capas de Pooling, capas totalmente conectadas, etc.) como de los parámetros de cada capa (número de filtros en la capa de convolucion, tamaño de los filtros, operaciones de agrupación en la capa de submuestreo, etc.).
+La creación de un modelo robusto a partir de la utilización de redes neuronales convolucionales, es una tarea muy complicada, debido a que en la actualidad no existen estudios que indique cual es la configuración correcta que esta debe seguir. Es así, que todos los trabajos que utilizan cualquier técnica perteneciente a \textit{Deep Learning}, se basan en la experimentación sobre diversar configuraciones en la arquitectura, estas configuraciones estan relacionadas con el numero de capas de convolución, sub-muestreo, totalmente conectadas, tipos de funciones de activacion y normalizacion. Otros elementos muy importantes que tambien son considerados al momento de realizar experimentos, son los parámetros de cada capa, tales como: el número y tamaño de los filtros en la capa de convolucion, operaciones de agrupación en la capa de sub-muestreo, etc.
 
-\textbf{¿Por qué esta configuración de capas y parámetros?} Para la elección de las capas y parámetros, se hizo experimentos con distintas configuraciones en la arquitectura, seleccionando las capas y parámetros da cada una de ellas mediante prueba y error, evaluando el error y precisión de cada configuración.
+Sin embargo, entrenar un red neuronal no es una tarea fácil, debido a que se tienen que optimizar miles de parametros para la creación de un buen modelo, asi como las miles de multiplicaciones de matrices que tienen que llevarse a cabo para realizar la operación de convolución. Es así que el número de experimentos que se puedan realizar, depende mucho de la insfraestructura y \textit{hardware} sobre el cual se esta trabajando, siendo este una gran limitante para una extensa experimentación.
 
-Se evaluaron 3 arquitecturas con distintas configuraciones de capas y parámetros en las bases de datos FER2013 y CK+.
+Según lo explicado en los parrafos anteriores, para encontrar la correcta configuracion de una arquitectura basada en las redes neuronales convolucionales que resuelva el problema de reconocimiento de expresiones faciales, se realizaron muchos experimentos, cada uno con una configuracion diferente que la anterior. En total se evaluaron 3 arquitecturas con distintas configuracion de capas y parametros, en cada una de estas se calculo la precision y error utilizando las bases de datos FER2013 y CK.
+
 
 
 
@@ -98,8 +99,11 @@ Se evaluaron 3 arquitecturas con distintas configuraciones de capas y parámetro
     \label{tab:tabla_arqui_3_CK}
 \end{table}
 }
-
 \end{itemize}
+
+De acuerdo con los experimentos realizados, se puede obsevar que la mejor configuracion de capas es: convolucion-\textit{pooling}-convolucion-\textit{pooling}-FC, con 32 y 64 filtros de tamaño 4$\times$4 en la primera y segunda capa de convolucion respectivamente, ventanas de agrupacion de 2$\times$2 en las dos capas de sub-muestreo y un total de 1024$\times$1024 neuronas en las ultimas capas totalmente conectadas.
+
+Segun los resultados mostrados en las tablas~\ref{tab:tabla_arqui_1_fer} y~\ref{tab:tabla_arqui_1_CK} se puede concluir que, la utilización de dos capas consecutivas de convolución es una mala elección, debido a que el hecho de aplicar dos filtros consecutivos hace que la información de la imagen se pierda mas rápidamente que lo normal, ya que el tamaño de la imagen se reduce significativamente después de cada una de estas operaciones. También, las tablas~\ref{tab:tabla_arqui_3_fer} y~\ref{tab:tabla_arqui_3_CK} muestran resultados muy por debajo de la segunda configuración(la mejor obtenida en los experimentos realizados), similar que la explicacion anterior, se concluye que se dan estos resultados debido a la utilizacion de dos capas consecutivas de sub-muestreo, ya que el objetivo de estas capaz es reducir las dimensiones de la imagen solo preservando información reelevante, sin embargo, al realizar una operación de sub-muestreo detras de otra, hace que se pierda mas información de la necesaria. 
 
 \section{Arquitectura Propuesta}
 La entrada de nuestra arquitectura consta de una imagen de 48x48 pixeles en
