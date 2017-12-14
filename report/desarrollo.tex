@@ -36,8 +36,8 @@ Se optó por la utilización del detector de rostros \textit{Haar Cascade}, debi
 \end{figure}
 
 \section{Experimentación en la Elección de Parámetros y Capas en la Construcción de la Arquitectura CNN}
-
-La creación de un modelo robusto a partir de la utilización de redes neuronales convolucionales, es una tarea muy complicada, debido a que en la actualidad no existen estudios que indique cual es la configuración correcta que esta debe seguir. Es así, que todos los trabajos que utilizan cualquier técnica perteneciente a \textit{Deep Learning}, se basan en la experimentación sobre diversar configuraciones en la arquitectura, estas configuraciones estan relacionadas con el numero de capas de convolución, sub-muestreo, totalmente conectadas, tipos de funciones de activacion y normalizacion. Otros elementos muy importantes que tambien son considerados al momento de realizar experimentos, son los parámetros de cada capa, tales como: el número y tamaño de los filtros en la capa de convolucion, operaciones de agrupación en la capa de sub-muestreo, etc.
+\label{sec:experiment}
+La creación de un modelo robusto a partir de la utilización de redes neuronales convolucionales, es una tarea muy complicada, debido a que en la actualidad no existen estudios que indique cual es la configuración correcta que esta debe seguir. Es así, que todos los trabajos que utilizan cualquier técnica perteneciente a \textit{deep learning}, se basan en la experimentación sobre diversar configuraciones en la arquitectura, estas configuraciones estan relacionadas con el numero de capas de convolución, sub-muestreo, totalmente conectadas, tipos de funciones de activacion y normalizacion. Otros elementos muy importantes que tambien son considerados al momento de realizar experimentos, son los parámetros de cada capa, tales como: el número y tamaño de los filtros en la capa de convolucion, operaciones de agrupación en la capa de sub-muestreo, etc.
 
 Sin embargo, entrenar un red neuronal no es una tarea fácil, debido a que se tienen que optimizar miles de parametros para la creación de un buen modelo, asi como las miles de multiplicaciones de matrices que tienen que llevarse a cabo para realizar la operación de convolución. Es así que el número de experimentos que se puedan realizar, depende mucho de la insfraestructura y \textit{hardware} sobre el cual se esta trabajando, siendo este una gran limitante para una extensa experimentación.
 
@@ -106,108 +106,91 @@ De acuerdo con los experimentos realizados, se puede obsevar que la mejor config
 Segun los resultados mostrados en las tablas~\ref{tab:tabla_arqui_1_fer} y~\ref{tab:tabla_arqui_1_CK} se puede concluir que, la utilización de dos capas consecutivas de convolución es una mala elección, debido a que el hecho de aplicar dos filtros consecutivos hace que la información de la imagen se pierda mas rápidamente que lo normal, ya que el tamaño de la imagen se reduce significativamente después de cada una de estas operaciones. También, las tablas~\ref{tab:tabla_arqui_3_fer} y~\ref{tab:tabla_arqui_3_CK} muestran resultados muy por debajo de la segunda configuración(la mejor obtenida en los experimentos realizados), similar que la explicacion anterior, se concluye que se dan estos resultados debido a la utilizacion de dos capas consecutivas de sub-muestreo, ya que el objetivo de estas capaz es reducir las dimensiones de la imagen solo preservando información reelevante, sin embargo, al realizar una operación de sub-muestreo detras de otra, hace que se pierda mas información de la necesaria. 
 
 \section{Arquitectura Propuesta}
-La entrada de nuestra arquitectura consta de una imagen de 48x48 pixeles en
-escala de gris que es el resultado de la detección y recorte hecho en la fase de detección
-de rostro, seguido de una capa de 32 convoluciones con filtro de 4x4 sin solapamiento,
-luego se aplica un sub muestreo de 2x2 con función MAX \footnote[6]{Función que determina el máximo de n números.} , seguido de una capa de 64
-convoluciones con filtros de 2x2 sin solapamiento, para posteriormente aplicar un sub
-muestreo de 2x2 con función MAX, aplicada las convoluciones y sub muestreo
-procedemos a aplicar el Dropout\footnote[7]{Una forma simple de prevenir el \textit{overfitting} en Redes Neuronales..} con 20\%, seguido de dos capas de 1024 neuronas
-totalmente conectadas cada una. Finalmente, para la clasificación se aplica la función de
-normalización Softmax, que en este proyecto toma 6 clases que representa a las 6
-expresiones faciales antes mencionadas.
+\label{sec:arq_propuesta}
+De acuerdo con los experimentados mostrados en la seccion~\ref{sec:experiment}, la arquitectura que consiguio los mejores resultados sigue la siguiente configuracion: la entrada consta de una imagen de 48x48 pixeles en escala de gris, que es el resultado de la fase de detección y extracción de rostro, seguido de una capa de 32 convoluciones con filtro de 4x4 sin solapamiento, luego se aplica un sub muestreo de 2x2 con función MAX \footnote[6]{Función que determina el máximo de n números.} , seguido de una capa de 64 convoluciones con filtros de 2x2 sin solapamiento, para posteriormente aplicar un sub muestreo tambien de dimensiones 2x2 con función MAX, aplicada las convoluciones y sub muestreo se procede a aplicar el Dropout\footnote[7]{Una forma simple de prevenir el \textit{overfitting} en Redes Neuronales..} con 20\%, seguido de dos capas, con 1024 neuronas totalmente conectadas cada una. Finalmente, para la clasificación se aplica la función de normalización Softmax, la cual toma 6 clases, las cuales representar al numero de expresiones a reconocer.
 \vspace{0.5cm}
 \begin{table}[H]
     \centering
-    \includegraphics[width=50mm]{./Imagenes/tabla_arquitectura.png}
+    \includegraphics[width=60mm]{./Imagenes/tabla_arquitectura.png}
     \caption{Arquitectura del modelo propuesto}
     \label{tab:tabla_arquitectura}
 \end{table}
 
-\section{DESCRIPCIÓN DE LAS CAPAS DE LA ARQUITECTURA}
-La arquitectura de Red Neuronal Convolucional sigue la siguiente composición:
-\begin{itemize}
-\item Primera capa de convolución.
-\item Primera capa de Pooling.
-\item Segunda capa de Convolución.
-\item Segunda capa de Pooling.
-\item Primera capa totalmente conectada
-\item Segunda capa totalmente conectada
-\end{itemize}
 
-\vspace{0.5cm}
+\begin{figure}[H]
+		\centering
+		\includegraphics[width=180mm]{./Imagenes/arquitectura_CNN_grafico.pdf}
+		\caption{Arquitectura grafica del modelo propuesto.}
+		\vspace{0.15cm}
+		\textit{Fuente: Propio.}
+		\label{fig:arquitectura_CNN_grafico}
+\end{figure}
 
+La tabla~\ref{tab:tabla_arquitectura} muestra de arriba para abajo, la representación secuencial de las capas dentro de la arquitectura propuesta antes mencionada. Sin embargo, La figura~\ref{fig:arquitectura_CNN_grafico} muestra de una forma mas detallada cada una de las capas que integran la arquitectura, construyendo de esta forma una red neuronal convolucional. Tambien se muestra en esta figura, la salida final obtenida despues de realizar una consulta sobre el modelo, resaltando el rostro detectado en la imagen de entrada, y relacionando la expresion facial que este tiene con una imagen caricaturizada.
+
+\section{Descripción de la Capas de la Arquitectura}
+
+Dentro de cada capa perteneciente a la red neuronal convolucional, se lleva a cabo operaciones de multiplicacion de matrices, agrupacion de regiones, etc, con el objetivo de extraer o resaltar características importantes de las cuales la red pueda aprender patrones y filtros que se adanten mejor al problema, de tal forma que pueda dar respuestas precisas a entradas futuras. 
+
+Siguiendo el orden de capas de la arquitectura propuestas, presentada en la seccion~\ref{sec:arq_propuesta}, se describe el comportamiento de cada uno de ellos de la siguiente forma: 
 \begin{itemize}
 \item
 {
-\textbf{Primera capa convolución.}Cuenta con 32 filtros (mapa de características) del
-tamaño 4x4 pixeles. Esta capa tiene la función de extraer las características
-relevantes (en el caso de expresiones faciales se puede ver en la Figura 26 que las
-características más relevantes son: los ojos, boca, nariz, y otras deformaciones en
-el rostro) de la imagen de entrada de tamaño 48x48 pixeles, generando 32 nuevas
-imágenes de tamaño 45x45 pixeles a partir de los filtros aplicados.
+\textbf{Primera capa convolución.} Cuenta con 32 filtros (mapa de características) de tamaño 4x4 pixeles. Esta capa tiene como objetivo extraer características de alto nivel. La figura~\ref{fig:filtro1} muestra el conjunto de imagenes generadas despues de aplicar los 32 filtros de convolución sobre la imagen de entrada, estas imagenes muestra claramente que en esta capa, la arquitectura se encarga de aprender filtros que sean capaces de extraer bordes y partes fundamentales del rostro, tales como: los ojos, boca, nariz y cejas. Esta primera capa de convolución genera una imagen de salida por cada filtro, siendo así, 32 nuevas imágenes las entradas para la siguiente capa. 
+
 \begin{figure}[H]
 		\centering
-		\includegraphics[width=80mm]{./Imagenes/filtro1.png}
-		\caption{Imágenes después de la primera convolución.}
-		Source: Propia
+		\includegraphics[width=100mm]{./Imagenes/filtro1.png}
+		\caption{Imágenes de salida después de la primera convolución.}
+		\vspace{0.15cm}
+		\textit{Fuente: Propio.}
 		\label{fig:filtro1}
 \end{figure}
 }
 
 \item
 {
-\textbf{Primera capa de Pooling.}Recibe como parámetros de entrada
-las imágenes generadas a partir de la primera capa de convolución. Su función es
-la de reducir características redundantes mediante la agrupación de pixeles,
-generando 32 nuevas imágenes de tamaño 22x22 pixeles.
+\textbf{Primera capa de \textit{pooling} o sub-muestreo.} Recibe como parámetros de entrada, las 32 imágenes generadas a partir de la primera capa de convolución. Su función es la de reducir características redundantes mediante la agrupación de pixeles y eleccion del mejor de entre ellos, esta agrupacion se realiza en sub-regiones no solapadas de la matriz, de dimensiones 2$\times$2. Despues de obtener estas sub-regiones, se obtiene el maximo pixel de entre ellas para ser la salida de dicha sub-region. La figura~\ref{fig:filtro2} muestra imágenes semejantes a las obtenidas por la primera capa de convolución, esto se debe a que esta capa no realiza ninguna alteración en el valor de los píxeles, mas al contrario, esta encargada de reducir las dimensiones de las imágenes de entrada, eliminando los píxeles menos significativos. Debido a que se aplica este tipo de operaciones a cada imagen de entrada de esta capa, su número de imágenes de salida sera igual a su numero de entradas.
+
 \begin{figure}[H]
 		\centering
-		\includegraphics[width=80mm]{./Imagenes/filtro2.png}
-		\caption{Imágenes después del primer Pooling.}
-		Source: Propia
+		\includegraphics[width=100mm]{./Imagenes/filtro2.png}
+		\caption{Imágenes de salida después del primer sub-muestreo.}
+		\vspace{0.15cm}
+		\textit{Fuente: Propio.}
 		\label{fig:filtro2}
 \end{figure}
 }
 
 \item
 {
-\textbf{Segunda capa de Convolución.}Cuenta con 64 filtros, recibe como parámetros
-de entradas las imágenes generadas a partir de la primera capa de Pooling. Su
-función es extraer las características relevantes de las imágenes de entrada,
-generando 64 nuevas imágenes de tamaño 21x21 pixeles.
+\textbf{Segunda capa de convolución.} Cuenta con 64 filtros y recibe como parámetros de entrada las imágenes generadas a partir de la primera capa de sub-muestreo. A diferencia de la primera capa de convolución, su funcion es la de extraer y detectar caracteristicas de mas bajo nivel. La figura~\ref{fig:filtro3} muestra las 64 imagenes generadas a partir los filtros de esta capa, en ellas se puede observar de manera mas abstracta ciertos puntos y rectas que representan partes del rostro de la imagen de entrada. Como se menciono anteriormente, esta capa origina 64 imágenes de salida, cada una con un tamaño de 21$\times$21 píxeles.
+
 \begin{figure}[H]
 		\centering
-		\includegraphics[width=80mm]{./Imagenes/filtro3.png}
-		\caption{Imágenes después de la segunda convolución.}
-		Source: Propia
+		\includegraphics[width=100mm]{./Imagenes/filtro3.png}
+		\caption{Imágenes de salida después de la segunda convolución.}
+		\vspace{0.15cm}
+		\textit{Fuente: Propio.}
 		\label{fig:filtro3}
 \end{figure}
 }
 
 \item
 {
-\textbf{Segunda capa de Pooling.}Recibe como parámetros de entrada
-las imágenes generadas a partir de la segunda capa de convolución. Su función es
-la de reducir características de estas imágenes mediante la agrupación de pixeles,
-generando 64 nuevas imágenes de tamaño 10x10 pixeles.
+\textbf{Segunda capa de \textit{pooling} o sub-muestreo.} Recibe como parámetros de entrada las imágenes generadas a partir de la segunda capa de convolución. Similar que la primera capa de sub-muestreo, es la encargada de eliminar características no relevantes de las imágenes de entrada, mediante la agrupación y selección del mejor píxel, las sub-regiones de agrupacion son de dimensiones 2$\times$2. La figura~\ref{fig:filtro4} muestra las 64 imágenes generadas a partir de esta capa, donde cada una de estas nuevas imágenes son de tamaño 10x10 pixeles. Segun esta figura se puede observar que el rostro se distorsiona y pierde su forma original, siendo estas, a lo que se conoce como características de bajo nivel.
 \begin{figure}[H]
 		\centering
-		\includegraphics[width=80mm]{./Imagenes/filtro4.png}
-		\caption{Imágenes después del segundo Pooling.}
-		Source: Propia
+		\includegraphics[width=100mm]{./Imagenes/filtro4.png}
+		\caption{Imágenes de salida después del segundo sub-muestreo.}
+		\vspace{0.15cm}
+		\textit{Fuente: Propio.}
 		\label{fig:filtro4}
 \end{figure}
 }
 \item
 {
-\textbf{Capas totalmente conectadas.}
-Recibe como parámetros de entrada las imágenes
-generadas a partir de la segunda capa de Pooling, su función es la de ajustar los
-pesos en las conexiones de las neuronas pertenecientes a la arquitectura,
-minimizando el error haciendo uso del algoritmo BackPropagation. La última
-capa totalmente conectada cuenta con 6 neuronas, las cuales representan las 6
-expresiones faciales utilizadas en este proyecto.
+\textbf{Capas totalmente conectadas.} Recibe como parámetros de entrada las imágenes generadas a partir de la segunda capa de sub-muestreo, las cuales representan las caracteristicas a bajo nivel pertenecientes a la imagen de entrada original. El objetivo de esta capa, es relacionar cada una de estas características por medio de las 2 capas totalmente conectadas con 1024 neuronas cada una, donde cada neurona es una imagen que representa alguna caracteristica encontrada en las capas anteriores. Al final de la arquitectura, se utiliza la función de normalización \textit{softmax} para generar 6 salidas, donde cada una de ellas representa a una expresion facial. La funcion de normalizacion es la encargada de asignar una probabilidad a cada una de estas salidas, siendo nuestra salida final, aquella que presente la mayor probabilidad.
 }
 \end{itemize}
 
@@ -238,14 +221,6 @@ Obteniendo un total de 7,620,199 parámetros totales.
     \label{tab:parametros}
 \end{table}
 
-
-\begin{figure}[H]
-		\centering
-		\includegraphics[width=180mm]{./Imagenes/arquitectura_CNN_grafico.png}
-		\caption{Arquitectura grafica del modelo propuesto}
-		Source: Propio
-		\label{fig:arquitectura_CNN_grafico}
-\end{figure}
 	
 \section{ENTRENAMIENDO DE LA CNN}
 El entrenamiento de nuestra Red Neuronal Convolucional siguió un proceso
