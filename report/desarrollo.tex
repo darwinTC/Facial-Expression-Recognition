@@ -195,52 +195,33 @@ Siguiendo el orden de capas de la arquitectura propuestas, presentada en la secc
 \end{itemize}
 
 \section{Parametros de la Arquitectura}
-Cada 
 
+El número de parámetros que contiene una determinada arquitectura, depende mucho del número de capas, filtros, y neuronas en la capa totalmente conectada. Conocer la cantidad de parámetros en una red, es de gran utilidad, debido a que gracias a ellos podemos hacernos una idea de cuan difícil o fácil es entrenar esta. Por tanto, mientras una red o arquitectura tenga mas parámetros, esta sera mas costosa, obviamente, debido a la gran cantidad de parámetros por optimizar. Sin embargo, la cantidad de parámetros no necesariamente refleja la robustés de una red para una determinada tarea. Por ejemplo, puede existir problemas que con pocos parámetros a optimizar sean mejores que considerando complejas arquitecturas, o de forma viceversa.
 
-La imágenes de entrada son definidas en el tamaño de 48x48 píxeles como valor
-estándar basándonos en el tamaño en el cual están las imágenes de la base de datos
-FER2013, el número de convoluciones en la primera capa es de 32 y 64 en la segunda
-capa de convolución obteniendo así un total de 32x64 mapas de características, la capa
-de Pooling agrupa subregiones de las dimensiones 2x2 píxeles para que no se pierda
-mucha información, nosotros optamos por la elección de dos capas totalmente conectadas
-de 1024x1024 producto de los resultados obtenidos basándonos en prueba y error , el total
-de parámetros obtenidos con la arquitectura propuesta es de:
+Una manera mas fácil de entender el comportamiento de la optimización de parámetros, es ver esta red como una función, donde, las salidas o etiquetas de cada entrada son el resultado de la función y cada variables son las entradas, siendo el principal objetivo, optimizar todas las constantes que multiplican a las variables, de tal manera que la función se ajuste para todas las entradas y de las salidas correctas. 
+
+La tabla~\ref{tab:parametros} muestra la cantidad de parámetros obtenidos por la red. Un detalle muy importante, es que la capas de sub-muestreo no contienen ningún tipo de párametro a optimizar, esto es debido a que la función de agrupacion es fija y no necesita ser modificada. Sin embargo, en la capa de convolución los filtros inicialmente son ceros, y son modificados en cada etapa de entrenamiento, lo mismo ocurre con las neuronas de las últimas capas totalmente conectadas. La cantidad total de parametros es 7,620,199, distribuidos de la siguiente forma: 
 
 \begin{itemize}
-\item Imagen de entrada: 48x48 píxeles
 \item 1ra capa con 32 convoluciones: 544 parámetros
 \item 2da capa con 64 convoluciones: 8256 parámetros
 \item 1ra capa totalmente conectada: 6554624 parámetros
 \item 2da capa totalmente conectada: 1049600 parámetros
 \item función de normalización Softmax: 7175 parámetros
 \end{itemize}
-Obteniendo un total de 7,620,199 parámetros totales.
 
 \begin{table}[H]
     \centering
-    \includegraphics[width=140mm]{./Imagenes/parametros.png} 
-    \caption{Número de parámetros de nuestra CNN}
+    \includegraphics[width=160mm]{./Imagenes/parametros.png} 
+    \caption{Número de parámetros de la arquitectura propuesta.}
     \label{tab:parametros}
 \end{table}
 
 	
-\section{ENTRENAMIENDO DE LA CNN}
-El entrenamiento de nuestra Red Neuronal Convolucional siguió un proceso
-iterativo en el que se presentó como datos de entrada imágenes de expresiones faciales y
-sus respectivas etiquetas de salida (clases correspondientes a la expresión facial a la cual
-pertenece: enojo, miedo, alegría, tristeza, sorpresa y neutro).
+\section{Entrenamiento de la Red}
+El entrenamiento de nuestra Red Neuronal Convolucional siguió un proceso iterativo en el que se presentó como datos de entrada imágenes de expresiones faciales y sus respectivas etiquetas de salida (clases correspondientes a la expresión facial a la cual pertenece: enojo, miedo, alegría, tristeza, sorpresa y neutro).
 
-Durante esta fase de entrenamiento, la Red Neuronal Convolucional aprendió
-mediante el ajuste de sus pesos, con el fin de ser capaz de predecir la etiqueta de clase
-correcta de los datos de entrada, el algoritmo de Red Neuronal más popular para la fase
-de entrenamiento es el algoritmo de BackPropagation, dicho algoritmo se usó en nuestra
-fase de entrenamiento. Los pesos iniciales de nuestra red se eligieron al azar y comienza
-el entrenamiento o aprendizaje. Se procesó los datos de entrada para lograr obtener las
-etiquetas deseadas obteniendo un error el cual se propago hacia atrás mediante el
-algoritmo antes mencionado(BackPropagation) haciendo que se ajusten los pesos, este
-proceso ocurrió una y otra vez hasta que se minimizo el error y eso ocurrió cuando se
-logró una convergencia de los datos.
+Durante esta fase de entrenamiento, la Red Neuronal Convolucional aprendió mediante el ajuste de sus pesos, con el fin de ser capaz de predecir la etiqueta de clase correcta de los datos de entrada, el algoritmo de Red Neuronal más popular para la fase de entrenamiento es el algoritmo de BackPropagation, dicho algoritmo se usó en nuestra fase de entrenamiento. Los pesos iniciales de nuestra red se eligieron al azar y comienza el entrenamiento o aprendizaje. Se procesó los datos de entrada para lograr obtener las etiquetas deseadas obteniendo un error el cual se propago hacia atrás mediante el algoritmo antes mencionado(BackPropagation) haciendo que se ajusten los pesos, este proceso ocurrió una y otra vez hasta que se minimizo el error y eso ocurrió cuando se logró una convergencia de los datos.
 
 \section{TEST AL MODELO CREADO}
 Una vez creada el modelo (un archivo con extensión .h5) se procede a realizar las
