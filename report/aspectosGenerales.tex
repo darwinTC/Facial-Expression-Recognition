@@ -13,44 +13,44 @@ Las técnicas tradicionales para el reconocimiento de expresiones faciales usada
 \section{Antecedentes}
 Se muestra una lista de trabajos resaltantes que hacen uso de tecnicas de \textit{Deep Learning}, los cuales sirvieron de inspiración y fuente de información valiosa en el desarrollo de este trabajo. También se presentan trabajos dedicados al reconocimiento de expresiones faciales utilizando técnicas tradicionales de visión por computador y \textit{Machine Learning}.
 
-
-\vspace{1cm}
-
 \subsection{Técnicas Tradicionales para el reconocimiento de expresiones faciales}
 Muchos abordages fueron propuestos para la tarea de reconocimiento de expresiones faciales basados técnicas tradicionales y \textit{machine learning}. 
 
-
-\vspace{1cm}
-\textbf{“Learning active facial patches for expression analysis” \cite{zhong2012learning}}\\
+\begin{enumerate}
+\item {\textbf{“Learning active facial patches for expression analysis” \cite{zhong2012learning}}
 
 Zhong et al. propone un método para el reconocimiento de expresiones faciales basado en \textit{patches} informativos de expresiones faciales (e.g. ojos, mejillas, boca, etc) de los rostros humanos contenidos en las imágenes. Así, introduce un marco de aprendizaje por tareas multiples (MTSL) de dos etapas para ubicar de manera eficiente los \textit{patches} discriminativos en las imagenes con contenido facial. La primera etapa consiste en extraer un conjunto de \textit{patches} por cada expresión facial dentro de un conjunto de datos de entrenamiento. En la segunda parte del MTSL, extraído el conjunto  de \textit{patches} por cada expresion facial en el conjunto de datos de entrenamiento dos tareas son desarrolladas, el reconocimiento de expresión facial y verificacion facial.  Estas dos tareas son integrados para aprender de los \textit{patches} obtenidos con anterioridad. El aprendizaje tiene como objetivo determinar cuales son los específicos \textit{patches} faciales que corresponden a cada expresión facial. Finalmente, un clasificador SVM es entrenado para reconocer las características contenidas en los \textit{patches} para una de las seis expresiones faciales consideradas en este trabajo. 
-\vspace{2cm}
+}
 
-\textbf{“Local gabor binary patterns from three orthogonal planes for automatic facial expression recognition” \cite{almaev2013local}}\\ 
+\item{\textbf{“Local gabor binary patterns from three orthogonal planes for automatic facial expression recognition” \cite{almaev2013local}}
 
 Almaev et al.  propone un descriptor dinámico de apariencias \textit{Local Gabor Binary Patterns de Three Ortogonal Planes}(LGBP-TOP) donde, analizando la textura espacial y dinámica, y combinado con filtros de gabor logra un alto nivel de precisión en el reconocimiento de expresiones faciales en tiempo real. Además, el descriptor propuesto es robusto a errores en la alineación rotacional propios de la captura de registros.
-\\
+}
 
-\textbf{“An integrated approach for efficient analysis of facial expressions” \cite{ghayoumi2014integrated}}\\
+\item{\textbf{“An integrated approach for efficient analysis of facial expressions” \cite{ghayoumi2014integrated}}
 
 Ghayoumi et al.  propone la integración de tres métodos para el reconocimiento de expresiones faciales. \textit{Locality Sensitive Hashing} (LSH), \textit{Principal Component Analysis} (PCA) y \textit{Linear Discriminant Analysis} (LDA)  son los tres métodos utilizados para el reconocimiento de expresiones faciales en este trabajo. Para reconocer una expresión facial son extraídos los vectores de características de dos regiones mas informativas del rostro, la región de los ojos y la región de la boca. El LSH esta compuesto por funciones hash los cuales son usados para mapear los vectores de características extraídos de las imagenes en bloques de colisiones, donde cada bloque esta registrado como la locación de vectores de características pertenecientes a una específica expresión facial a priori. Así, se logra reducir redundancia en el espacio de representación de las imagenes respecto a las imagenes que pertencen al mismo tipo de expresion facial. Luego de este paso son aplicados los métodos de reducción de dimensionalidad PCA y LDA  para aliviar la complejidad computacional y reducir redundancia en los datos. Por último, es entrenado un clasificador SVM con los datos obtenidos despues de aplicado los métodos de reducción de dimensionalidad.
+}
 
-\vspace{1cm}
+\end{enumerate}
+
 \subsection{Técnicas de \textit{Deep Learning}}
 
 Muchos de los avances en visión por computador, procesamiento del lenguaje natural, bioinformática y otros campos de investigación se debe a la utilización de métodos y técnicas de inteligencia artificial, especificamente técnicas de \textit{machine lerning} y \textit{deep learning}. Este último, es el causante de una gran impacto en el avance técnologico con relacionamiento directo en el mundo comercial (e.g. carros autónomos, chatboots, creación de nuevos farmacos por computador, etc). 
-\\
 
-\textbf{“Gradient-based learning applied to document recognition” \cite{2lecun1998gradient}}\\
+\begin{enumerate}
 
- Yan Lecunn  et al. introduce uno de los primeros trabajos con redes neuronales convolucionales, un tipo especial del deep learning. En este trabajo, muestra la potencialidad de la técnica de aprendizaje basado en gradiente. Esta técnica es utilizado en el entrenamiento de una \textit{multilayer perceptr}on via el algoritmo de \textit{backpropagation}. Es diseñado una Red Neuronal Convolucional para tratar con la variabilidad de forma 2D en imágenes para el reconocimiento de digitos escritos a mano. también es introducido dos sistemas on-line para el reconocimiento de documentos escritos a mano. Para controlar los componentes del sistema tales como la extracción, segmentación, reconocimiento y modelage del lenguaje; es introducido un nuevo paradigma de aprendizaje llamado \textit{Graph Transformer networks}. Además, es descrito la pontencialidad del \textit{Graph transformer networks} aplicado a la lectura de cheques de banco. Donde, las \textit{redes neuronales convolucionales} para el reconocimiento de caracteres combinado con técnicas de entrenamiento global proporcionaron un alto rendimiento. Esto fue demostrado en el area comercial al ser capaz el modelo de leer cheques personales de forma automatizada, logrando leer millones de cheques por día. \\
- 
- \textbf{“Imagenet classification with deep convolutional neural networks” \cite{8krizhevsky2012imagenet}}\\
+\item{\textbf{“Gradient-based learning applied to document recognition” \cite{2lecun1998gradient}}
+
+ Yan Lecunn  et al. introduce uno de los primeros trabajos con redes neuronales convolucionales, un tipo especial del deep learning. En este trabajo, muestra la potencialidad de la técnica de aprendizaje basado en gradiente. Esta técnica es utilizado en el entrenamiento de una \textit{multilayer perceptr}on via el algoritmo de \textit{backpropagation}. Es diseñado una Red Neuronal Convolucional para tratar con la variabilidad de forma 2D en imágenes para el reconocimiento de digitos escritos a mano. también es introducido dos sistemas on-line para el reconocimiento de documentos escritos a mano. Para controlar los componentes del sistema tales como la extracción, segmentación, reconocimiento y modelage del lenguaje; es introducido un nuevo paradigma de aprendizaje llamado \textit{Graph Transformer networks}. Además, es descrito la pontencialidad del \textit{Graph transformer networks} aplicado a la lectura de cheques de banco. Donde, las \textit{redes neuronales convolucionales} para el reconocimiento de caracteres combinado con técnicas de entrenamiento global proporcionaron un alto rendimiento. Esto fue demostrado en el area comercial al ser capaz el modelo de leer cheques personales de forma automatizada, logrando leer millones de cheques por día. 
+}
+\item{\textbf{“Imagenet classification with deep convolutional neural networks” \cite{8krizhevsky2012imagenet}}
  
 Krizhevsky et al. propone una arquitectura de \textit{red neuronal convolucional profunda} que es entrenado para clasificar 1.2 millones de imágenes en alta resolución en 1000 categorías. La red propuesta en este trabajo llega a estar compuesto por 60 millones de parametros y 650000 neuronas. Para el entrenamiento fueron usados \textit{GPUs} para acelerar el computo de multiplicaciones matriciales requeridas en las operaciones de convolución. Este trabajo logra el estado del arte en clasificacion de imagenes a gran escala en la competición ILSVRC-2012. Esto es demostrado al lograr reducir el error de clasificación de imagenes en la base de datos ImageNet de 26.2\% a 15.3 \%. Siendo así, uno de los trabajos con mas impacto en visión por computador. 
 
 Así, es demostrado que una de las principales desventajas de los métodos basados en extracción de características diseñadas a mano es el tiempo de computo lo que les dificulta ser escalables, requisito principal para aplicaciones en el mundo real. además, estos métodos solo cubren una parte específica de casos, esto debido a las suposiciones que se toman para casos específicos que no logran cubrir todo el espectro de posibilidades para poder crear modelos generalizables. Por otro lado, los métodos de \textit{deep learning} demostraron ser capaces de crear modelos generalizables y escalables. Hecho este análisis, fuimos motivados a desarrollar una arquitectura de \textit{red neuronal convolucional} para el reconocimiento de expresiones faciales.
-
+}
+\end{enumerate}
 \section{Objetivos}
 \subsection{Objetivo General}
 Desarrollar una arquitectura de Red Neuronal Convolucional que sea capaz de obtener niveles de precision confiables (con un minimo margen de error) en el reconocimiento de expresiones faciales, permitiendo así contribuir en el desarrollo de futuras aplicaciones del mundo real que sirvan para el beneficio de la sociedad.
@@ -95,7 +95,7 @@ Dada la naturaleza del trabajo de investigación, se utilizó los métodos de in
 \section{Cronograma de Actividades}
 \begin{table}[!htb]
     \centering
-    \includegraphics[angle=90,width=60mm]{Imagenes/cronograma.png}
+    \includegraphics[angle=90,width=50mm]{Imagenes/cronograma.png}
     \caption{Cronograma de actividades}
     \label{tab:tab1}
 \end{table}

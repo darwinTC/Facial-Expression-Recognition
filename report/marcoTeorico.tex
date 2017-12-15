@@ -12,7 +12,7 @@ Tambien exister otras definiciones que indican que, el ojo es la puerta de entra
 
         \begin{figure}[H]
 		\centering
-		\includegraphics[width=100mm]{Imagenes/estructura_percepcion.jpg}
+		\includegraphics[width=120mm]{Imagenes/estructura_percepcion.jpg}
 		\caption{Estructura de la percepción visual humana.}
 		\vspace{0.15cm}
 		\textit{Fuente: Fernando Vila Arroyo, “El Libro Blanco de la Iluminación”. España 2013.}
@@ -175,7 +175,7 @@ f(x)=Max(0,x)
 
 \begin{figure}[H]
 		\centering
-		\includegraphics[width=80mm]{Imagenes/fRelu.png}
+		\includegraphics[width=90mm]{Imagenes/fRelu.png}
 		\caption{Grafica de la función RELU}
 		\vspace{0.15cm}
 		\textit{Fuente: Hyperbolic tangent and ReLU neurons, Int8.}
@@ -209,6 +209,11 @@ La figura~\ref{fig:back_propagation} muestra la representación de como el desce
 
 El algoritmo de \textit{Backpropagation} es muy intuitivo. Dada una entrada a la red, esta genera una salida, la cual posteriormente es comparada con la salida deseada, consiguiendo asi el primer error de salida (funcion de costo o diferencia entre la salida deseada y la salida obtenida por la red). Seguido, este error es propagado hacia atras, distribuyendo una porcion de dicho error a todas las neuronas de la capa anterior que aportaron para la obtención de la salida alcanzada. Este proceso se repite, capa por capa, hasta que todas las neuronas de la red ayan recibido una porcion del error obtenido. El objetivo de realizar estos pasos, es crear una red cuyos pesos de cada neurona minimizen la funcion de costo, consiguiendo asi un nivel de precision inversamente proporcional al error alcanzado por cada entrada(mientras menos error, mayor sera la precision alcanzada).
 
+Matematicamente, el descenso de gradiente esta basado en la observación de que si la funcion multivariable $F(x)$ es definida y  diferenciable en la vecindad del punto $a$, entonces $F(x)$ decrece rapidamente si uno de ellos va desde $a$ en dirección del gradiente negativo de $F$ (donde la gradiente negativa esta representada por $-\bigtriangledown F(a)$). Se deduce que si, $a_{n+1} = a_n - \gamma \bigtriangledown F(a)$, para un $\gamma$ suficientemente pequeño, entonces $F(a_n)\geq F(a_{n+1})$. En otras palabras, el termino $\gamma \bigtriangledown F(a)$ es substraido desde $a$ porque se quiere mover a travez de la gradiente.  Con esta observación en mente,  se comienza con la suposición $x_0$ para un mínimo local de $F$, y se considera la secuencia $X_0, X_1, X_2,...$, tal que: $x_{n+1} = x_n - \gamma_n \bigtriangledown F(x_n), n\geq0$. Entonces nosotros tendremos $F(x_0)\geq F(x_1) \geq F(x2) \geq ...$ esperando que la secuencia converga en el mínimo local esperado. Se debe tener en cuenta que el valor del tamaño del paso $\gamma$ puede cambiar en cada iteración, obteniendo así la siguiente ecuación.
+
+\begin{equation}
+\gamma_n=\frac{(x_n - x_{n-1})^T [\bigtriangledown F(x_n)-\bigtriangledown F(x_{n-1})]}{||\bigtriangledown F(x_n)-\bigtriangledown F(x_{n-1})||^2}
+\end{equation}
 \begin{figure}[H]
 		\centering
 		\includegraphics[width=80mm]{Imagenes/back_propagation.png}
@@ -481,14 +486,12 @@ Después de que su madre desarrolló una enfermedad mental y se suicidó, Paul E
 
 
 \subsection{Las seis emociones básicas}
-Antes de Ekman llegó a la escena, se creía ampliamente (por antropólogos incluyendo Margaret Mead) que las expresiones faciales y las emociones que ellos representan se determinaron por la cultura – que las personas aprendieron a hacer y leer las expresiones faciales de sus sociedades. Ekman se dispuso a probar esta idea en 1968. Él viajó a Papúa Nueva Guinea para estudiar las expresiones faciales de los miembros de la tribu Fore apartada, donde aprendió que podían identificar constantemente las emociones en las expresiones faciales por mirar fotos de la gente de otras culturas, a pesar de que la tribu no había sido expuesta a cualquier exterior culturas.
-
-Se hizo evidente, entonces, que las expresiones faciales son interculturales, su investigación reveló que existe un conjunto universal de ciertas expresiones faciales se utilizan tanto en el mundo occidental y oriental. Esta lista de expresiones faciales universales, que Ekman publicó en el año 1972, dispone de las seis emociones básicas. Tomar por lo vistazo a la lista, así como imágenes, definiciones y movimientos musculares de estas emociones, a continuación:
+Antes de Ekman llegó a la escena, se creía ampliamente (por antropólogos incluyendo Margaret Mead) que las expresiones faciales y las emociones que ellos representan se determinaron por la cultura – que las personas aprendieron a hacer y leer las expresiones faciales de sus sociedades. Ekman se dispuso a probar esta idea en 1968. Él viajó a Papúa Nueva Guinea para estudiar las expresiones faciales de los miembros de la tribu Fore apartada, donde aprendió que podían identificar constantemente las emociones en las expresiones faciales por mirar fotos de la gente de otras culturas, a pesar de que la tribu no había sido expuesta a cualquier exterior culturas. Se hizo evidente, entonces, que las expresiones faciales son interculturales, su investigación reveló que existe un conjunto universal de ciertas expresiones faciales se utilizan tanto en el mundo occidental y oriental. Esta lista de expresiones faciales universales, que Ekman publicó en el año 1972, dispone de las seis emociones básicas~\cite{29ekman2016scientists}.
 
 \begin{itemize}
 \item {\textbf{Cólera:} 
 \begin{itemize}
-\item \textbf{Descripción.-} El antagonismo hacia una persona o un objeto a menudo se sentía después de que usted siente que ha sido agraviado u ofendido.
+\item \textbf{Descripción.-} El antagonismo hacia una persona o un objeto a menudo se sentía después de que uno siente que ha sido agraviado u ofendido.
 \item { \textbf{Movimientos musculares faciales.-} La reducción de las cejas, apretar y estrechar los labios, los ojos mirando, apretando los párpados inferiores, con menos frecuencia, empujando la mandíbula hacia adelante.
 
 \begin{figure}[H]

@@ -266,6 +266,7 @@ Como se menciono en el parrafo antetior, en este trabajo, la recopilación de la
 Para la realizacion de experimentos se utilizaron 3 bases de datos, dos de ellas se encuentran disponibilizadas en internet(\textit{FER103} y \textit{CK+}) y una tercera que es resultado de la union de estas dos anteriores. Se opto por considerar esta tercera base de datos, debido a que el abordage de \textit{deep learning} trabaja mejor mientras tenga mas datos para la fase de entrenamiento.
  
 \subsection{FER2013}
+\label{subsec:fer2013}
 Es una base de datos del sitio web \textit{Kaggle}, destinada para el concurso de reconocimiento de expresiones faciales. Fue preparada por Pierre-Luc Carrier y Aaron Courville, como parte de un proyecto de investigacion en curso. Esta clasificada en 7 categorias: molesto, disgustado, miedo, feliz, triste, sorpresa y neutro, sin embargo, en este trabajo se opto por unir la categoria enojado y disgustado debido a las similitudes que ambas tieenen.
 
 Este conjunto de datos esta disponible como archivos \textit{train.csv} y \textit{test.csv}, los cuales contienen 2 columnas: \textit{emocion} y \textit{pixels}. La columna \textit{emocion} contiene un codigo numerico en el rango de 0 a 6 inclusive, para la expresion que esta presente en la imagen. La columna \textit{pixels} contiene un string de numeros que representa los valores para cada pixel dentro de la imagen. El conjunto de entrenamiento consiste de 28,709 ejemplos, mientras que los datos de prueba son 3589. La figura~\ref{fig:imagenes_fer} muestra ejemplos de imagenes de este conjunto de datos.
@@ -280,7 +281,8 @@ Este conjunto de datos esta disponible como archivos \textit{train.csv} y \texti
 		\label{fig:imagenes_fer}
 \end{figure}
 
-\section{CK$+$}
+\subsection{CK$+$}
+\label{subsec:ck+}
 La base de datos CK+ (Cohn-Kanade) posee imágenes de expresiones faciales frontales de 210 diferentes personas. Estas imágenes tienen una resolución original de 640x490 y 640x480 píxeles. Debido a que solo se encontraron imágenes pertenecientes a esta base de datos y sin ninguna etiqueta que relacione la expresión facial que representa cada una de ellas, en este trabajo se optó por realizar la etiquetación de forma manual(basandonos en el trabajo de Paul Ekman), obteniendo así 3289 imágenes, transformandolas a imágenes en escala de gris con dimensiones de 48x48 píxeles. Similar que la anterior base de datos, se consideraron 6 categorías (enojado, miedo, feliz, triste, sorprendido y neutro). Se utilizó el 80\% del total de imagenes para la fase de entrenamiento (2966 imágenes) y el 20\% para la fase de pruebas (323 imágenes). La figura~\ref{fig:imagenes_ck+} muestra ejemplos de imagenes d eeste conjunto de datos.
 
 \begin{figure}[H]
@@ -293,7 +295,8 @@ La base de datos CK+ (Cohn-Kanade) posee imágenes de expresiones faciales front
 \end{figure}
 
 
-\section{FER2013 - CK$+$}
+\subsection{FER2013 - CK$+$}
+\label{subsec:ck+fer2013}
 Esta base de datos resulta de la unión de las dos anteriores (Fer2013 y CK+), obteniendo así un total de 39176 imágenes en escala de gris de dimensiones de 48x48 píxeles. El conjunto de entrenamiento es el 80\% del total (35264 imagenes), mientra que el conjunto de prueba es el 20\% (3912 imagenes). Se realizo esta unión de datos con la finalidad de obtener un modelo mas robusto, ya que las tecnicas de \textit{deep learning} dependen mucho de la cantidad de datos para el entrenamiento de un modelo.
 
 \section{Resultados Experimentales}
