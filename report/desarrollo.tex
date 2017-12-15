@@ -249,167 +249,159 @@ La figura~\ref{fig:test} muestra los pasos 3 y 4 mencionadas en los parrafos ant
 \end{figure}
 
 \section{Recopilación de Imágenes de Expresiones Faciales.}
-La recopilación de las imágenes de expresiones faciales se obtuvo de 2 fuentes
-secundarias de información (internet) en los cuales los datos están pre-elaborados
-(imágenes con tamaños de 48x48 pixeles de base de datos FER20131 y 640x490 o
-640x480 píxeles de la base de datos CK+).
+En la actualidada el internet nos ha abastecido con grandes cantidades de informacion. Dentro de estas, podemos encontrar comunidades dedicadas a la investigacion que proveen bases de datos de imagenes etiquetadas relacionadas con problemas especificos, tales como: el reconocimiento de placas de automoviles, clasificacion de imagenes o como en nuestro caso, reconocimiento de expresiones faciales. Estas bases de datos son utilizadas por toda la comunidad cientifica, publicando y comparando sus resultados con trabajos previos y acercandoce mas y mas a un margen de error minimo. Generalemente estas bases de datos cuentan con imagenes cuidadosamente seleccionadas, intentando cubrir todos los casos posibles que se podrian presentar en escenas de la vida real. 
 
-\section{BASE DE DATOS}
-Se usó 3 bases de datos ($FER2013^{1}$ y $CK+^{2}$ ) y una tercera como resultado de la
-unión de las 2 bases de datos antes mencionadas.
-\subsection{FER2013}
-Es una base de datos del sitio web Kaggle{1} para el concurso de reconocimiento de
-expresiones faciales.
-
-Esta base de datos posee 35887 imágenes en escala de gris de 48x48 pixeles,
-clasificados en 7 categorías (enojado, disgustado, miedo, feliz, triste, sorpresa y neutro).
-En este trabajo se optó por unir la categoría enojado y disgustado por las similitudes que
-tienen entre ellas.
-
-Separamos la data en 2 partes training y test. El training consta de 32298 imágenes
-y el test de 3589 imágenes.
+Como se menciono en el parrafo antetior, en este trabajo, la recopilación de las imágenes de expresiones faciales se obtuvo de 2 fuentes secundarias de información (internet) en los cuales los datos están pre-elaborados. La primera base de datos utilizada es contiene imagenes de 48$\times$48 pixeles de tamaño, mientras que la segunda de 640$\times$640. Para la fase de prueba tambien se utilizaron imagenes aleatorias de internet, dentro de estas imagenes se consideran personas del mundo real y caricaturizadas(ver figura~\ref{fig:caricaturizado}).
 
 \begin{figure}[H]
 		\centering
-		\includegraphics[width=90mm]{Imagenes/imagenes_fer.png}
+		\includegraphics[width=110mm]{Imagenes/pruebas.pdf}
+		\caption{Ejemplo de un rostro real y caricaturizado.}
+		\vspace{0.15cm}
+		\textit{Fuente: Internet.}
+		\label{fig:caricaturizado}
+\end{figure}
+
+\section{Base de Datos}
+Para la realizacion de experimentos se utilizaron 3 bases de datos, dos de ellas se encuentran disponibilizadas en internet(\textit{FER103} y \textit{CK+}) y una tercera que es resultado de la union de estas dos anteriores. Se opto por considerar esta tercera base de datos, debido a que el abordage de \textit{deep learning} trabaja mejor mientras tenga mas datos para la fase de entrenamiento.
+ 
+\subsection{FER2013}
+Es una base de datos del sitio web \textit{Kaggle}, destinada para el concurso de reconocimiento de expresiones faciales. Fue preparada por Pierre-Luc Carrier y Aaron Courville, como parte de un proyecto de investigacion en curso. Esta clasificada en 7 categorias: molesto, disgustado, miedo, feliz, triste, sorpresa y neutro, sin embargo, en este trabajo se opto por unir la categoria enojado y disgustado debido a las similitudes que ambas tieenen.
+
+Este conjunto de datos esta disponible como archivos \textit{train.csv} y \textit{test.csv}, los cuales contienen 2 columnas: \textit{emocion} y \textit{pixels}. La columna \textit{emocion} contiene un codigo numerico en el rango de 0 a 6 inclusive, para la expresion que esta presente en la imagen. La columna \textit{pixels} contiene un string de numeros que representa los valores para cada pixel dentro de la imagen. El conjunto de entrenamiento consiste de 28,709 ejemplos, mientras que los datos de prueba son 3589. La figura~\ref{fig:imagenes_fer} muestra ejemplos de imagenes de este conjunto de datos.
+
+
+\begin{figure}[H]
+		\centering
+		\includegraphics[width=110mm]{Imagenes/imagenes_fer.pdf}
 		\caption{Imágenes de la base de datos FER2013}
-		Source: Kaggle
+		\vspace{0.15cm}
+		\textit{Fuente: Kaggle.}
 		\label{fig:imagenes_fer}
 \end{figure}
 
-\section{CK+}
-La base de datos $CK+^{2}$ (Cohn-Kanade) posee imágenes de expresiones faciales
-frontales de 210 personas en resolución de 640x490 o 640x480 pixeles. Nosotros
-elegimos de entre ellos 3289 imágenes convirtiéndolos a escala de gris de 48x48 pixeles
-y clasificándolos en 6 categorías (enojado, miedo, feliz, triste, sorprendido y neutro).
-Nuestro training consta de 2966 imágenes y el test de 323 imágenes.
+\section{CK$+$}
+La base de datos CK+ (Cohn-Kanade) posee imágenes de expresiones faciales frontales de 210 diferentes personas. Estas imágenes tienen una resolución original de 640x490 y 640x480 píxeles. Debido a que solo se encontraron imágenes pertenecientes a esta base de datos y sin ninguna etiqueta que relacione la expresión facial que representa cada una de ellas, en este trabajo se optó por realizar la etiquetación de forma manual(basandonos en el trabajo de Paul Ekman), obteniendo así 3289 imágenes, transformandolas a imágenes en escala de gris con dimensiones de 48x48 píxeles. Similar que la anterior base de datos, se consideraron 6 categorías (enojado, miedo, feliz, triste, sorprendido y neutro). Se utilizó el 80\% del total de imagenes para la fase de entrenamiento (2966 imágenes) y el 20\% para la fase de pruebas (323 imágenes). La figura~\ref{fig:imagenes_ck+} muestra ejemplos de imagenes d eeste conjunto de datos.
 
 \begin{figure}[H]
 		\centering
-		\includegraphics[width=90mm]{Imagenes/imagenes_ck+.png}
+		\includegraphics[width=110mm]{Imagenes/imagenes_ck+.pdf}
 		\caption{Imágenes de la base de datos CK+}
-		Source: Base de datos CK+
+		\vspace{0.15cm}
+		\textit{Fuente: Base de datos CK+.}
 		\label{fig:imagenes_ck+}
 \end{figure}
 
 
-\section{FER2013 - CK+}
-Esta base de datos resulta de la unión de la base de datos Fer2013 y CK+,
-obteniendo un total de 39176 imágenes de 48x48 en escala de gris. El training tiene 35264
-y el test 3912 imágenes.
+\section{FER2013 - CK$+$}
+Esta base de datos resulta de la unión de las dos anteriores (Fer2013 y CK+), obteniendo así un total de 39176 imágenes en escala de gris de dimensiones de 48x48 píxeles. El conjunto de entrenamiento es el 80\% del total (35264 imagenes), mientra que el conjunto de prueba es el 20\% (3912 imagenes). Se realizo esta unión de datos con la finalidad de obtener un modelo mas robusto, ya que las tecnicas de \textit{deep learning} dependen mucho de la cantidad de datos para el entrenamiento de un modelo.
 
-\section{RESULTADOS EXPERIMENTALES}
+\section{Resultados Experimentales}
 \label{sec:experiment}
-A continuación, se muestra los resultados que se obtuvieron en las diferentes bases
-de datos FER2013, CK+ y la tercera base de datos que se obtuvo como resultado de la
-unión de los dos antes mencionadas.
 
-Se podrá apreciar los niveles de precisión alcanzado por cada categoría –
-Expresión Facial (Enojado, Miedo, Feliz, Triste, Sorprendido, Neutro). Así como sus
-matrices de confusión que nos mostraran los resultados positivos y sus falsos positivos,
-pudiendo así interpretar de mejor manera los resultados.
+Los experimentos se realizaron sobre los tres conjuntos de datos mencionados en la seccion anterior. En esta seccion se muestran los resultados de dichos experimentos uno por uno, donde se podran apreciar los niveles de precision alcanzados por cada categoria - expresion facial, asi como sus matrices de confusion, las cuales nos ayudaran para un mejor entendimiento e interpretacion de los resultados. Tambien son mostrados por medio de grafico, el aprendizade de la red medido en terminos de precision durante cada epoca.
+
+Para una mejor comprensión e interpretación de los resultados, se definen las siguiente palabras: \textit{precisión} es la fracción de instancias(datos de entrada) que alcanzaron un resultado correcto entre el número de instancias totales, \textit{recall} es la cantidad de intancias correctas recuperadas sobre la cantidad total de instancias relevantes(falsos positivos y falsos negativos). La figura~\ref{fig:precisionRecall} muestra de una manera mas sencilla ambas definiciones. Por otro lado \textit{f1-score} es la media armónica de la precisión y el \textit{recall}, la ecuación~\ref{eq:f1-score} muestra su representación matemática. \textit{Falsos positivos} o \textit{falses positives} en ingles, son el conjunto de instancias cuyas respuestas se creen que son correctas cuando en realidad estan erradas. \textit{Falsos negativos} o \textit{false negatives} a diferencia del anterior, son el conjunto de instancias que creen que estan errados cuando en realidad son correctos. \textit{verdaderos positivos} y \textit{verdaderos negativos} son simplemente instancias que son o bien correctas o erroneas.
+
+\begin{figure}[H]
+		\centering
+		\includegraphics[width=120mm]{Imagenes/Precisionrecall.pdf}
+		\caption{Precision y recall.}
+		\vspace{0.15cm}
+		\textit{Fuente: Precision and recall, Wikipedia.}
+		\label{fig:precisionRecall}
+\end{figure}
+
+\begin{equation}\label{eq:f1-score}
+F1 = 2\times\frac{precision\times recall}{precision + recall}
+\end{equation}
 
 \subsection{FER2013}
 
 \begin{table}[H]
     \centering
-    \includegraphics[width=80mm]{Imagenes/tabla_resultados_fer.png} 
+    \includegraphics[width=100mm]{Imagenes/tabla_resultados_fer.png} 
     \caption{Resultados obtenidos - FER2013}
     \label{tab:tabla_resultados_fer}
 \end{table}
 
-En la Tabla 3 se puede apreciar los niveles de precisión en la clasificación de los
-datos de la base de datos FER2013, mostrando en la categoría Enojado 46\%, Miedo 52\%,
-Feliz 74\% Triste 43\%, Sorprendido 71\% y Neutro 52\%.
+En la tabla~\ref{tab:tabla_resultados_fer} se muestra los resultados obtenidos durante los experimentos realizados en la base de datos FER2013. Dentro de los niveles de precision y \textit{recall}, se observa que las categorias 'feliz' y 'sorpresa' obtienen mejores resultados que las demas, alcanzando un nivel de precision de 74\% y 71\% respectivamente. Por otro lado, la categoria 'enojado' alcanza 46\%, siendo la mas baja de entre todas. El resultado general alcanzado en este conjunto de datos es de 57\%.
 
 \begin{figure}[H]
 		\centering
-		\includegraphics[width=80mm]{Imagenes/matriz_confusion_fer.png}
+		\includegraphics[width=90mm]{Imagenes/matriz_confusion_fer.png}
 		\caption{Matriz de confusión, precisión del Test - FER2013}
 		\label{fig:matriz_confusion_fer}
 \end{figure}
 
+Gracias a la matriz de confusión(figura~\ref{fig:matriz_confusion_fer}) se puede descubrir con exactitud la cantidad de datos que fallan y aciertan por categoría. Como se menciono anteriormente, la categoria 'feliz' es la que presenta mayor precisión, acertando 659 imágenes de las 879 en total, también podemos observar que la red confunde esta categoría en mayor cantidad con la categoría 'neutro', siendo en total 68 imagenes de expresiones faciales 'neutras' confundidas con expresiones de la categoría 'feliz'. Otro detalle muy importante que nos muestra esta imagen, es que la red confunde en grandes cantidades las categorías 'triste' con 'enojado' y 'neutro', lo que nos da a entender que deberiamos poner mas enfasis e importancia en imagenes pertenecientes a estas categorias.  
 \begin{figure}[H]
 		\centering
-		\includegraphics[width=80mm]{Imagenes/precision_fer.png}
+		\includegraphics[width=95mm]{Imagenes/precision_fer.pdf}
 		\caption{Precisión durante el proceso de entrenamiento y prueba (\%) – FER2013}
 		\label{fig:precision_fer}
 \end{figure}
 
-\begin{figure}[H]
-		\centering
-		\includegraphics[width=80mm]{Imagenes/perdida_fer.png}
-		\caption{Perdida durante el proceso de entrenamiento y prueba (\%) – FER2013}
-		\label{fig:perdida_fer}
-\end{figure}
+La figura~\ref{fig:precision_fer} muestra la precisión alcanzada por la red durante el proceso de entrenamiento y pruebas en el transcurso de cada época. La linea azul muestra el crecimiento del aprendizaje con los datos de entrenamiento, se puede observar que entre la época 50 y 100 llega a alcanzar el 100\% de precisión, sin embargo esto sucede por que se realiza este cálculo con datos que ya fueron visualizados por la red. La linea verde muestra la precisión alcanzada con los datos de prueba, alcanzando un 57\%, esto sucede por que los datos de prueba son datos nuevos para la red, datos que nunca fueron vistos durante su etapa de entrenamiento.
 
+ 
 \subsection{CK+}
 
 \begin{table}[H]
     \centering
-    \includegraphics[width=80mm]{Imagenes/tabla_resultados_ck+.png} 
+    \includegraphics[width=100mm]{Imagenes/tabla_resultados_ck+.png} 
     \caption{Resultados obtenidos - CK+}
     \label{tab:tabla_resultados_ck+}
 \end{table}
 
-En la Tabla 4 se puede apreciar los niveles de precisión en la clasificación de los
-datos de la base de datos CK+, mostrando en la categoría Enojado 91\%, Miedo 76\%,
-Feliz 100\%, Triste 87\%, Sorprendido 100\% y Neutro 78\%.
+La tabla~\ref{tab:tabla_resultados_ck+} muestra los resultados obtenidos durante los experimentos realizados en la base de datos CK+. Dentro de los niveles de precision y \textit{recall}, se observa que las categorias 'feliz' y 'sorpresa' obtienen mejores resultados que las demas(de igual forma que los resultados en la anterior base de datos), alcanzando un nivel de precision de 100\% y 100\% respectivamente. Por otro lado, la categoria 'miedo' alcanza 46\%, siendo la mas baja de entre todas. El resultado general alcanzado en este conjunto de datos es de 91\%.
 
 \begin{figure}[H]
 		\centering
-		\includegraphics[width=80mm]{Imagenes/matriz_confusion_ck+.png}
+		\includegraphics[width=90mm]{Imagenes/matriz_confusion_ck+.png}
 		\caption{Matriz de confusión, precisión del Test - CK+}
 		\label{fig:matriz_confusion_ck+}
 \end{figure}
 
+La figura~\ref{fig:matriz_confusion_ck+} muestra la matriz de confusión correspondiente a los resultados obtenidos para esta base de datos. Como se mostró en la tabla anterior, se puede observar que de las 82 muestras de la categoría 'feliz', todas son acertadas, alcanzando así el 100\% de precisión mencionado anteriormente. También se puede observar que en la categoría 'miedo' de las 88 imágenes en total, confunde 8 de ellas con la categoría 'enojado'. Otra de las categorías que también es confundida con las demas, es 'neutro', donde de 46 imágenes en total, 5 son confundidas con 'sorpresa', 4 con 'enojo' y 1 con 'feliz'.
+ 
 \begin{figure}[H]
 		\centering
-		\includegraphics[width=80mm]{Imagenes/precision_ck+.png}
+		\includegraphics[width=95mm]{Imagenes/precision_ck+.pdf}
 		\caption{Precisión durante el proceso de entrenamiento y prueba (\%) - CK+}
 		\label{fig:precision-ck+}
 \end{figure}
 
-\begin{figure}[H]
-		\centering
-		\includegraphics[width=80mm]{Imagenes/perdida_ck+.png}
-		\caption{Perdida durante el proceso de entrenamiento y prueba (\%) – FER2013}
-		\label{fig:perdida_ck+}
-\end{figure}
+La figura~\ref{fig:precision-ck+} muestra la precisión alcanzada por la red durante el proceso de entrenamiento y pruebas en el transcurso de cada época. La linea azul representa la precisión alcanzada con los datos de entrenamiento, donde se observar claramente que este alcanza el 100\% de precisión aproximadamente en la época 50, sim embargo, también esta curva presenta oscilaciones en ciertas épocas, bajando ligeramente su nivel de precisión. La linea verde representa la precisión alcanzada con el conjuto de pruebas, el cual muestra el pico mas alto de la curva entre la época 200 y 300, siendo este número de épocas el apropiado para obtener la mejor precisión posible.
 
 \subsection{FER2013 - CK+}
 
-
 \begin{table}[H]
     \centering
-    \includegraphics[width=80mm]{Imagenes/tabla_resultados_fer_ck+.png} 
+    \includegraphics[width=100mm]{Imagenes/tabla_resultados_fer_ck+.png} 
     \caption{Resultados obtenidos - FER2013 - CK+}
     \label{tab:tabla_resultados_fer_ck+}
 \end{table}
 
-En la Tabla 5 se puede apreciar los niveles de precisión en la clasificación de los
-datos de la base de datos (FER2013 - CK+), mostrando en la categoría Enojado 57\%,
-Miedo 48\%, Feliz 75\%, Triste 44\%, Sorprendido 77\% y Neutro 53\%
+La tabla~\ref{tab:tabla_resultados_fer_ck+} muestra los resultados obtenidos durante los experimentos realizados en la union de las bases de datos FER2013 y CK+. Dentro de los niveles de precision y \textit{recall}, se observa que las categorias 'feliz' y 'sorpresa' obtienen mejores resultados que las demas(de igual forma que en las anteriores bases de datos), alcanzando un nivel de precision de 75\% y 77\% respectivamente. Por otro lado, la categoria 'triste' alcanza 44\%, siendo la mas baja de entre todas. El resultado general alcanzado en este conjunto de datos es de 60\%.
 
 \begin{figure}[H]
 		\centering
-		\includegraphics[width=80mm]{Imagenes/matriz_confusion_fer_ck+.png}
+		\includegraphics[width=90mm]{Imagenes/matriz_confusion_fer_ck+.png}
 		\caption{Matriz de confusión, precisión del Test FER2013 - CK+}
 		\label{fig:matriz_confusion_fer_ck+}
 \end{figure}
 
+La figura~\ref{fig:matriz_confusion_fer_ck+} muestra la matriz de confusion correspondiente a la union de las dos bases de datos antes mencionadas. En ella se puede observar que muchas categorias son confundidas por las otras en cantidades considerables, sin embargo la categoria 'triste' es la que mas errores comete, siendo 109 y 106 imagenes confundidas con la categorias 'miedo' y 'neutro' respectivamente. 
+  
 \begin{figure}[H]
 		\centering
-		\includegraphics[width=80mm]{Imagenes/precision_fer_ck+.png}
+		\includegraphics[width=95mm]{Imagenes/precision_fer_ck+.pdf}
 		\caption{Precisión durante el proceso de entrenamiento y prueba (\%) FER2013 - CK+}
 		\label{fig:precision_fer_ck+}
 \end{figure}
 
-\begin{figure}[H]
-		\centering
-		\includegraphics[width=80mm]{Imagenes/perdida_fer_ck+.png}
-		\caption{Perdida durante el proceso de entrenamiento y prueba (\%) FER2013 - CK+}
-		\label{fig:perdida_fer_ck+}
-\end{figure}
+En la figura~\ref{fig:precision_fer_ck+}, similar que en las dos anteriores gráficas de precisión correspondientres a las anteriores bases de datos, se puede observar que con los datos de entrenamiento se obtiene un nivel de precisión del 100\$, sin embargo, con los datos de entrenamiento se genera una curva con pequeñas oscilaciones durante el transcurso de las épocas, por lo tanto se concluye que utilizando un número de épocas mayor o igual a 20 se obtendra el máximo nivel de precisión.
+
 
 
