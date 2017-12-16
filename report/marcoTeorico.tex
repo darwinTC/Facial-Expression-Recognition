@@ -82,18 +82,6 @@ Las Redes Neuronales Artificiales (ANN) imitan el funcionamiento del cerebro, ba
 
 Además, similar a las redes neuronales biologicas, se producirán respuestas, cuando en la utilización se presenten entradas totalmente desconocidas por el sistema entrenado. De este modo el sistema de red neuronal artificial no se limita a solo reconocer imagenes que ayan sido previamente vistas, sino en su generalidad para hallar similaridades entre la imagen de entrada y las imagenes previas antes de la fase de entrenamiento, generando asi un sistema robusto capaz de obtener una semejansa enorme a las redes neuronales biologicas.
 
-Las Redes Neuronales Artificiales se basan en el circuito de procesamiento de entradas en el cual los pesos son sumados. Las funciones de peso son conocidas generalmente como atenuadores. En la implementación, las entradas a una neurona son pesadas multiplicando el valor de la entrada por un factor que es menor o igual a uno. El valor de los factores de peso es determinado por el algoritmo de aprendizaje. Las entradas atenuadas son sumadas usando una función no lineal llamada 'Sigmoide'. Si la salida de la función suma excede el valor de entrada máximo de la neurona, esta responde generando una salida. Cada neurona tiene varias entradas y su salida está conectada a un conjunto de otros procesadores de entradas.
-
-Cuando una red funciona en modo normal, a partir de los datos presentados en la entrada, se genera un patrón especifico de salida. La relación entre la entrada y la salida será determinada durante la etapa de  entrenamiento, entonces cuando una entrada conocida es presentada sera dada una salida efectiva. Durante esta etapa de entrenamiento, el algoritmo de aprendizaje ajusta los pesos de las entradas hasta que se alcanza la salida esperada, esto se logra por medio de la minimización de una función de costo(ver ecuación~\ref{eq:funcion_salida}), la cual es representada como la diferencia entre la salida esperada y la salida obtenida.
-
-Devido a la compleja conexión que se realiza entre capas de la red, la complejidad con respecto a terminos computacionales y tiempo de ejecución, puede crecer de manera exponencial. Esto de debe a que cada neurona esta conectada a cientos de neuronas de la siguiente capa y cada neurona de esa siguiente capa realiza lo mismo. Por lo tanto mientras mas sea el numero de capas y neuronas, aparentemente, el sistema sera mejor, pero tambien sera mas complejo y dificil de entrenar.~\cite{21RedesNeuronales}.
-
-La figura~\ref{fig:neurona_artificial} muestra las partes de una neurona artificial, la cual es similar a la estructura de una neurona biologica.
-
-\begin{equation}\label{eq:funcion_salida}
-Y_{i} = f(\sum W_{i,j}X{j} - \theta{i})
-\end{equation}
-
 \begin{figure}[H]
 		\centering
 		\includegraphics[width=100mm]{Imagenes/neurona_artificial.png}
@@ -103,7 +91,17 @@ Y_{i} = f(\sum W_{i,j}X{j} - \theta{i})
 		\label{fig:neurona_artificial}
 \end{figure}
 
+Las Redes Neuronales Artificiales se basan en el circuito de procesamiento de entradas en el cual los pesos son sumados. Las funciones de peso son conocidas generalmente como atenuadores. En la implementación, las entradas a una neurona son pesadas multiplicando el valor de la entrada por un factor que es menor o igual a uno. El valor de los factores de peso es determinado por el algoritmo de aprendizaje. Las entradas atenuadas son sumadas usando una función no lineal llamada 'Sigmoide'. Si la salida de la función suma excede el valor de entrada máximo de la neurona, esta responde generando una salida. Cada neurona tiene varias entradas y su salida está conectada a un conjunto de otros procesadores de entradas.
 
+Cuando una red funciona en modo normal, a partir de los datos presentados en la entrada, se genera un patrón especifico de salida. La relación entre la entrada y la salida será determinada durante la etapa de  entrenamiento, entonces cuando una entrada conocida es presentada sera dada una salida efectiva. Durante esta etapa de entrenamiento, el algoritmo de aprendizaje ajusta los pesos de las entradas hasta que se alcanza la salida esperada, esto se logra por medio de la minimización de una función de costo(ver ecuación~\ref{eq:funcion_salida}), la cual es representada como la diferencia entre la salida esperada y la salida obtenida.
+
+\begin{equation}\label{eq:funcion_salida}
+Y_{i} = f(\sum W_{i,j}X{j} - \theta{i})
+\end{equation}
+
+Devido a la compleja conexión que se realiza entre capas de la red, la complejidad con respecto a terminos computacionales y tiempo de ejecución, puede crecer de manera exponencial. Esto de debe a que cada neurona esta conectada a cientos de neuronas de la siguiente capa y cada neurona de esa siguiente capa realiza lo mismo. Por lo tanto mientras mas sea el numero de capas y neuronas, aparentemente, el sistema sera mejor, pero tambien sera mas complejo y dificil de entrenar.~\cite{21RedesNeuronales}.
+
+La figura~\ref{fig:neurona_artificial} muestra las partes de una neurona artificial, la cual es similar a la estructura de una neurona biologica.
 
 
 \section{Arquitectura de una Red Neuronal Artificial}
@@ -118,7 +116,13 @@ Y_{i} = f(\sum W_{i,j}X{j} - \theta{i})
 		\label{fig:capa_red_neuronal}
 \end{figure} 
 
-Una red neuronal artificial esta compuesta por tres capas:
+La representación matemática de la salida de una neurona, esta dada por la ecuación~\ref{eq:neurona}. donde $x$ y $w$ representan la entrada y pesos de la neurona. La variable $i$ corresponde al número de pesos y entradas (estos dos siempre tienes que ser iguales en cantidad). Cada peso es multiplicado por su respectiva entrada y el producto de esas multiplicación son alimentadas en una función de activación que es denotada por la letra griega $\phi$. La neurona es solo la unidad de una red entera, ya que esta esta compuesta por tres grandes capas:
+
+\begin{equation}\label{eq:neurona}
+f(x_i, w_i) = \phi(\sum_{i=1}^{}(w_i * x_i))
+\end{equation}
+
+
 \begin{itemize}
 \item \textbf{Capa de Entrada.- }Es la encargada de recepcionar los datos de entrada que posteriormente seran procesados. La representacion de estas estradas puede variar dependiendo del tipo de problema que se quiera resolver. En el aso de imagenes, esta se puede representar como una matriz que contiene un determinado valor representativo para cada pixel.
 \item \textbf{Capa Oculta.- }Es la encargada de realizar el procesamiento pesado de la informacion, para posteriormente enviar la informacion ya procesada a la capa de salida.
@@ -186,7 +190,6 @@ f(x)=Max(0,x)
 \subsection{Bias o Sesgo}
 Es una cantidad constante que cada neurona de alguna capa oculta añade justo antes de aplicar la función de activacion, este valor puede incrementar o dismunir a la suma de productos(sumatoria de los productos obtenidos despues de multiplicar el valor de cada neurona con su respectivo peso que conecta hacia la siguiente neurona). El objetivo de este valor constante es lograr una convergencia más rápida de la red y evitar que el valor final entrante a una neurona sea un valor muy despreciable o muy significativo. La figura~\ref{fig:arquitectura_red_neuronal} muestra como este valor es intergado en la arquitectura de una red neuronal.
 
-
 \begin{figure}[H]
 		\centering
 		\includegraphics[width=100mm]{Imagenes/arquitectura_red_neuronal.png}
@@ -195,6 +198,15 @@ Es una cantidad constante que cada neurona de alguna capa oculta añade justo an
 		\textit{Fuente: Propio}
 		\label{fig:arquitectura_red_neuronal}
 \end{figure}
+
+
+\textbf{Que rol juega las bías?} Las funciones de activación vistas en la sección previa especifican el resultado de una sola neurona. Junto, el peso y el sesgo de una neurona dan forma a la salida de la activación para producir la salida deseada. La ecuacion~\ref{eq:sesgo} muestra este proceso.
+
+\begin{equation}\label{eq:sesgo}
+f(x, w, b) = \frac{1}{1 + e^{-wx+b}}
+\end{equation}
+
+La variable $x$ representa una entrada simple a la red neuronal. Las variables $w$ y $b$ especifican los pesos y bías de la red neuronal. La ecuación de arriba es una combinación de la ecuación~\ref{eq:neurona} que especifica una red neuronal y la ecuacion~\ref{eq:funcion_sigmoide} que representa la funcion de activacion sigmoid.
 
 \section{Implementación de una Red Neuronal Artificial}
 Una forma sencilla de implementar redes neuronales, consiste en almacenar los pesos en matrices. Se considera que la red neuronal es un grafo y simplemente representamos este grafo por medio de su matriz de adjacencia, donde cada posicion $(i,j)$ almacena el peso entre la neurona $i$ y la neurona $j$. Posteriormente guardamos los valores de todas las neuronas de una determinada capa en un vector, el producto del vector y la matriz de pesos de salida nos da los valores de entrada de cada neurona en la siguiente capa. Después se aplica la función de activación a cada elemento de ese segundo vector, y repetimos el proceso~\cite{21RedesNeuronales}.
@@ -207,7 +219,7 @@ El \textit{BackPropagation} es un algoritmo de aprendizaje supervisado que se us
 
 La figura~\ref{fig:back_propagation} muestra la representación de como el descenso de gradiente trabaja en la busqueda de los mejores parametros para una determinada funcion (ejemplo: sea la function $f(x)=ax+b$, donde los parametros son las constantes $a$ y $b$). El objetivo es alcanzar el circulo central, el cual representa los parametros óptimos buscados. Para alcanzar dicho objetivo se realiza una serie de paso (representados por las rectas trazadas entre cada par de puntos rojos, como se muestra en la figura~\ref{fig:back_propagation}) que sirven para ajustar los parametros de tal forma que poco a poco se acerquen a la funcion objetivo.
 
-El algoritmo de \textit{Backpropagation} es muy intuitivo. Dada una entrada a la red, esta genera una salida, la cual posteriormente es comparada con la salida deseada, consiguiendo asi el primer error de salida (funcion de costo o diferencia entre la salida deseada y la salida obtenida por la red). Seguido, este error es propagado hacia atras, distribuyendo una porcion de dicho error a todas las neuronas de la capa anterior que aportaron para la obtención de la salida alcanzada. Este proceso se repite, capa por capa, hasta que todas las neuronas de la red ayan recibido una porcion del error obtenido. El objetivo de realizar estos pasos, es crear una red cuyos pesos de cada neurona minimizen la funcion de costo, consiguiendo asi un nivel de precision inversamente proporcional al error alcanzado por cada entrada(mientras menos error, mayor sera la precision alcanzada).
+El algoritmo de \textit{Backpropagation} es muy intuitivo. Dada una entrada a la red, esta genera una salida, la cual posteriormente es comparada con la salida deseada, consiguiendo asi el primer error de salida (funcion de costo o diferencia entre la salida deseada y la salida obtenida por la red). Seguido, este error es propagado hacia atras, distribuyendo una porcion de dicho error a todas las neuronas de la capa anterior que aportaron para la obtención de la salida alcanzada. Este proceso se repite capa por capa hasta que todas las neuronas de la red ayan recibido una porcion del error obtenido. El objetivo de realizar estos pasos, es crear una red cuyos pesos de cada neurona minimizen la funcion de costo, consiguiendo asi un nivel de precision inversamente proporcional al error alcanzado por cada entrada(mientras menos error, mayor sera la precision alcanzada).
 
 Matematicamente, el descenso de gradiente esta basado en la observación de que si la funcion multivariable $F(x)$ es definida y  diferenciable en la vecindad del punto $a$, entonces $F(x)$ decrece rapidamente si uno de ellos va desde $a$ en dirección del gradiente negativo de $F$ (donde la gradiente negativa esta representada por $-\bigtriangledown F(a)$). Se deduce que si, $a_{n+1} = a_n - \gamma \bigtriangledown F(a)$, para un $\gamma$ suficientemente pequeño, entonces $F(a_n)\geq F(a_{n+1})$. En otras palabras, el termino $\gamma \bigtriangledown F(a)$ es substraido desde $a$ porque se quiere mover a travez de la gradiente.  Con esta observación en mente,  se comienza con la suposición $x_0$ para un mínimo local de $F$, y se considera la secuencia $X_0, X_1, X_2,...$, tal que: $x_{n+1} = x_n - \gamma_n \bigtriangledown F(x_n), n\geq0$. Entonces nosotros tendremos $F(x_0)\geq F(x_1) \geq F(x2) \geq ...$ esperando que la secuencia converga en el mínimo local esperado. Se debe tener en cuenta que el valor del tamaño del paso $\gamma$ puede cambiar en cada iteración, obteniendo así la siguiente ecuación.
 
@@ -300,6 +312,15 @@ Este tipo de redes, debido a la capacidad de retener informacion por cortos peri
 		\label{fig:red_recurrente}
 \end{figure}
 
+El diagrama~\ref{fig:rnn} muestra una red neuronal recurrente siendo desarrollada. Donde $x_t$ es la entrada en el paso $t$, $s_t$ es el estado oculto en el paso del tiempo $t$ ,esta es la memoria de la red. $s_T$ es calculada basada en los estados ocultos previos y la entrada al actual paso: $s_t = f(U x_t + W s_{t-1})$. La función F normalmente es una no linearidad. Finalmente, $o_t$ es la salida del paso $t$, donde $o_t = softmax(V s_t)$. 
+\begin{figure}[H]
+		\centering
+		\includegraphics[width=130mm]{Imagenes/rnn.jpg}
+		\caption{Red neuronal Recurrente.}
+		\vspace{0.15cm}
+		\textit{Fuente: Nature.}
+		\label{fig:rnn}
+\end{figure}
 \subsection{Redes Neuronales Convolucionales}
 Las Redes Neuronales Convolucionales (\textit{Convolution Neural Network}) a diferencia de las Redes Neuronales Recurrentes, mantienen el concepto de capas, pero cada neurona de una capa no recibe conexiones entrantes de todas las neuronas de la capa anterior, sino sólo de algunas. Esto favorece que una neurona se especialice en una región de la lista de números de la capa anterior, y reduce drásticamente el número de pesos y de multiplicaciones necesarias. Lo habitual es que dos neuronas consecutivas de una capa intermedia se especialicen en regiones solapadas de la capa anterior~\cite{16pusiol2014redes}.
 
@@ -383,7 +404,6 @@ Donde:
 \end{itemize}}
 
 \end{itemize}
-first revision and fix of the theoretical framework
 
 \subsection{Submuestreo}
 La arquitectura tradicional de una red neuronal convolucional sugiere que se inserte una capa de sub-muestreo despues de cada capa de convolucion. Su función es reducir progresivamente el tamaño espacial de la imagen de entrada con el objetivo de reducir la cantidad de parámetros a ser calculados en la red, y por lo tanto, también para controlar el sobre ajuste. La capa de agrupación funciona independientemente en cada segmento de profundidad de la entrada y la redimensiona espacialmente, dependiende de las dimensiones de la ventana de sub-muestre. Existen diferentes funciones de agrupación para realizar este tipo de operacion, funciones como: MAX, MIN, MODA, MEDIANA, etc, cada una de estas funciones se desenvuelve de manera muy diferente, dependiendo del problema que ese pretende resolver. La forma más común es una capa de agrupación con filtros de tamaño 2x2 y función de agrupación MAX, aplicando un salto de dos pixeles hacia abajo y hacia arriba para realizar el desplazamiento e iterar la operacion de sub-muestreo sobre toda la imagen, de esta forma descartando el 75\% de las activaciones. En este caso, cada operación MAX tomaría un máximo de 4 números (pequeña región de dimensiones de 2x2). La dimensión de profundidad no cambia. Más generalmente, la capa de agrupación tiene estas principales características:
@@ -419,7 +439,7 @@ En la practica solo fueron encontradas dos variaciones comunes de la capa de sub
 
 
 \subsection{Capa de normalización}
-Existen muchos tipos de capas de normalizacion propuestas hasta la actualidad, algunos de ellos fueron creados con la intension de asemejar mas la red, al comportamiento real del cerebro. Sin embargo, estas capas a pesar de aparentar ser un gran aporte para conseguir una inteligencia artificial pura, han caido debido a que en la practica su aporte es casi nula. 
+Existen muchos tipos de capas de normalizacion propuestas hasta la actualidad, algunos de ellos fueron creados con la intension de asemejar mas la red al comportamiento real del cerebro. Sin embargo, estas capas a pesar de aparentar ser un gran aporte para conseguir una inteligencia artificial pura, han caido debido a que en la practica su aporte es casi nula. 
 
 El objetivo de una capa de normalizacin es, como su mismo nombre lo dice, normalizar las activaciones de la capa anterior, es decir, se aplica una transformación que mantiene la activación de cierre media en 0 y la desviación estándar cerca de 1~\cite{22RedesNeuronalesConvolu}.
 
@@ -463,6 +483,26 @@ Donde:
 
 \begin{center} $Z = w_{0}x_{0} + w_{1}x_{1} +...+w_{m}x_{m} = \sum_{l=0}^m w_{l}x_{l} = w^Tx$\end{center}
 
+\begin{algorithm}
+\caption{Pseudo-Codigo softmax}\label{alg:euclid}
+
+\begin{algorithmic}[H]
+\Procedure{softmax}{$neuron_output$}
+
+\State $sum = 0$
+\For{\texttt{v in neuron\_output}}
+	\State $sum =sum + v$
+\EndFor
+
+\State $sum = math.exp(sum) $
+\State $proba[]$
+\For{\texttt{i in range(size(neuron\_output))}}
+	\State $proba[i] = math.exp(neuron_output[i])/sum$
+\EndFor
+\State \textbf{return} $proba$
+\EndProcedure
+\end{algorithmic}
+\end{algorithm}
 
 \section{Entrenamiento de una Red Convolucional}
 
@@ -474,9 +514,12 @@ El algoritmo \textit{BackPropagation}, como se describio anteriormente, es muy i
 \item Primero, se proporciona datos de entrada a la red.
 \item Segundo, son propagadas dichas entradas hasta la capa de salida, con pesos iniciales definidos o
 aleatorios.
-\item Tercero, se calcula el error en la capa de salida.
-\item Cuarto, se propaga dicho error hacia las neuronas ocultas (hacia atrás).
-\item Quinto, se cambia los pesos de las conexiones.
+\item Tercero, se calcula el error en la capa de salida utilizando la funcion de costo que se muestra en la ecuacion~\ref{eq:funcion_cost}, donde \textit{target} se refiere a la salida esperada y \textit{output} a la salida obtenida por la red.
+\begin{equation}\label{eq:funcion_cost}
+E_{total} = \sum \frac{1}{2}(target - output)^2
+\end{equation}
+\item Cuarto, se propaga dicho error hacia las neuronas ocultas (hacia atrás) utilizando el algoritmo \textit{backpropagation}.
+\item Quinto, se actualizan los pesos de las conecciones.
 \end{itemize}
 
 \section{Sobre las Expresiones Faciales}
