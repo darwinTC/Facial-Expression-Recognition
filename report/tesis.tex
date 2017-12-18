@@ -1,7 +1,7 @@
 \documentclass[12pt]{report}
 \usepackage[utf8]{inputenc}
+%\usepackage[utf8x]{inputenc} 
 %\usepackage[brazilian]{babel}
-
 %library for algorithms
 \usepackage{algorithm}
 \usepackage[noend]{algpseudocode}
@@ -140,7 +140,7 @@ EXPRESIONES FACIALES}}}
 \part{Aspectos Generales}
 \include{aspectosGenerales} 
 
-\part{Marco Teorico}
+\part{Marco Teórico}
 \include{marcoTeorico}
 
 \part{Desarrollo del Proyecto}
@@ -166,7 +166,7 @@ EXPRESIONES FACIALES}}}
 %----------------------bibliografia
 
 %\cleardoublepage
-\addcontentsline{toc}{chapter}{Bibliografia}
+\addcontentsline{toc}{chapter}{Bibliografía}
 \begin{spacing}{1.0}
 \nocite{*}
 \bibliographystyle{abbrv} % estilo de la bibliografía.
@@ -176,22 +176,26 @@ EXPRESIONES FACIALES}}}
 
 
 %----------------------------------apendix
+
 \appendix
 
-\chapter{OTROS CONCEPTOS}
-pendiente.
+\part*{ANEXOS}
+\addcontentsline{toc}{chapter}{ANEXOS}
+
+\chapter{OTROS CONCEPTOS}\label{A}
+\input{Otros_Conceptos}
 
 \chapter{TESTING}
-pendiente.
+\input{testing}
 
 \chapter{HERRAMIENTAS}
-pendiente.
+\input{herramientas}
 
 \chapter{GLOSARIO}
-pendiente.
+\input{glosario}
 
-\chapter{ACRONIMOS}
-pendiente.
+\chapter{ACRÓNIMOS}
+\input{acronimos}
 
 %-------------------------------
 
