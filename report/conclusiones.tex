@@ -1,48 +1,23 @@
 \chapter*{CONCLUSIONES}
 \begin{itemize}
-\item El desarrollo de una arquitectura de Red Neuronal Convolucional es muy
-compleja, debido a que no se cuenta con fundamentos teóricos para la correcta
-selección de parámetros (filtro de convolución, submuestreo, neuronas, etc.). La
-arquitectura propuesta muestra resultados con niveles de precisión alto, lo cual da
-evidencia que se hizo una correcta selección de las capas y los parámetros que lo
-componen.
-\item Existen dos formas de recopilación de datos: La primera consiste en crear una
-propia base de datos lo cual requiere de tiempo y dinero, la segunda opción y por
-la que se optó en este proyecto, consiste en extraer datos de internet de
-organizaciones dedicadas al campo de estudio.
 
-\item El uso de 2 capas de convolución con 64 y 32 filtros de tamaños 4x4 y 2x2 pixeles
-respectivamente muestra que es una buena selección de parámetros para la
-extracción de características de expresiones faciales.
+\item En este trabajo, desarrollamos un clasificador para el reconocimiento de expresiones faciales considerando seis categorías (alegre, neutro, feliz, triste, enojado, sorpresa).
 
-\item El Submuestreo o Pooling cumple funciones importantes relacionadas con el coste
-computacional, reduciendo el número de operaciones de computo con la
-disminución de las dimensiones de la imagen con el fin de reducir características.
-La utilización de 2 capas de Submuestreo de tamaño de agrupación 2x2 pixeles y
-con función Max, muestra que es una buena selección de parámetros para la
-reducción de características.
+\item Las bases de datos usadas en este trabajo Fer2013 \ref{subsec:fer2013} y CK+ \ref{subsec:ck+}, fueron estandarizados en tamaño y posteriormente normalizados en valor para reducir la varianza en los datos. 
 
-\item La función de activación RELU resulta ser la mejor opción para la
-implementación de una arquitectura de Red Neuronal por los resultados mostrados
-en el estado del arte del Deep Learning.
+\item Adicionalmente, se creo una tercera base de datos llamado Fer2013-CK+ \ref{subsec:ck+fer2013}, como resultado de la unión de las bases de datos Fer2013 y CK+.  
 
-\item La función de normalización softmax es muy eficiente para la clasificación de
-múltiples clases por los resultados mostrados en el estado del arte del Deep
-Learning.
+\item Desarrollamos una arquitectura de red neuronal convolucional para el reconocimiento de expresiones faciales \ref{sec:arq_propuesta}.
 
-\item Se entrenó satisfactoriamente la Red Neuronal Convolucional (basándonos en la
-técnica early stopping - Ver anexos), construida a partir de las capas antes
-mencionadas, teniendo algunas limitaciones, sea el caso de recursos
-computacionales, ocasionando demoras para la fase de entrenamiento, ya que solo
-se contó con el uso de CPU mas no de GPU.
+\item La arquitectura usada para crear el modelo para el reconocimiento de expresiones faciales fue el resultado de tres arquitecturas propuestas, siendo seleccionada la arquitectura con mejores resultados en los experimentos \ref{sec:experiment}.
 
-\item En la base de datos de datos CK+ se obtuvo un nivel de precisión alto por que las
-imágenes muestran rasgos resaltantes de las expresiones faciales los cuales fueron
-etiquetados manualmente en esta investigación. En FER2013 se muestra un nivel
-de precisión no muy bueno (Tabla 2) por el desbalance de datos en algunas
-categorías y para nivelarlos y alcanzar mejores resultados (Tabla 4), una opción
-es combinar con otras bases de datos, pero se corre riesgo de que los criterios de
-etiquetado de las expresiones faciales difieran.
+\item Cada una de las tres arquitectura propuestas, tuvo una  configuración diferente de los elementos principales que componen una red neuronal convolucional (número de capas de convolución, tamaño de los filtros de convolución, número de capas de pooling, operación de pooling, número de capas de neuronas totalmente conectadas, número de neuronas en la capa totalmente conectada) basada en trabajos de la literatura de \textit{deep learning} mostrados en \ref{sec:experiment}..
 
+\item Se realizó satisfactoriamente los experimentos en las tres bases de datos utilizadas Fer2013, CK+ y Fer2013-CK+ \ref{sec:experiment}.
+
+\item Se evaluó los resultados obtenidos por el modelo creado en las tres bases de datos Fer2013, CK+, Fer2013-CK+. Obteniendo un resultado de 90 \% de precisión en la base de datos CK+, mientras que en las bases de datos Fer2013 y Fer2013-CK+ se obtuvo 57\% y 60\% de precisión respectivamente (más detalles ver Tablas ~\ref{tab:tabla_resultados_ck+}, ~\ref{tab:tabla_resultados_fer}, ~\ref{tab:tabla_resultados_fer_ck+} ).
+
+
+\item Adicionalmente, una sugerencia fue alterar las imagenes con diferentes rotaciones, iluminación, etc. Sin embargo, esto no representaria las condiciones de las imagenes del mundo real, por lo que nosotros obtamos por recolectar un pequeño conjunto de imagenes de internet con contenido variado (fondo con diferente iluminación, oclusión parcial del rostro, posición rotada en algunos rostros, imagen de animes) que si representan en su mayoria las condiciones de las imágenes del mundo real. Así, se  hicieron pruebas en este conjunto de imágenes de internet. Los resultados obtenidos (pruebas satisfactorias - pruebas fallidas) son mostrados en \ref{sec:testing}.
 
 \end{itemize}
