@@ -1,30 +1,39 @@
 \section{Matriz de Confusión}
-En el análisis predictivo , una tabla de confusión (a veces también llamado
-una matriz de confusión), es una tabla con dos filas y dos columnas que muestra el número
-de falsos positivos, falsos negativos, verdaderos positivos y verdaderos negativos. Esto
-permite un análisis más detallado que solo la proporción de aciertos (precisión). La
-precisión no es una métrica fiable para el rendimiento real de un clasificador, ya que dio
-resultados engañosos si el conjunto de datos está desequilibrado (es decir, cuando el
-número de muestras en diferentes clases varían en gran medida). Por ejemplo, si había 95
-gatos y sólo 5 perros en el conjunto de datos, el clasificador podría fácilmente estar
-sesgada en la clasificación de todas las muestras como los gatos. La precisión global sería 95\%, pero en la práctica el clasificador tendría una tasa de reconocimiento 100\% para la
-clase de gato, pero una tasa de reconocimiento 0\% para la clase de perro \cite{30Mconfusion}.
 
-Suponiendo que la matriz de confusión anterior, su correspondiente tabla de
-confusión, para la clase de gato, sería la siguiente:
+La matriz de confusion es una técnica que facilita el análisis del rendimiento de un algoritmo de clasificación. Frecuentemente, el rendimiento de un clasificador es solo analizado en términos de \textit{precision} (verdaderos positivos, verdaderos negativos y falsos positivos). Sin embargo, este no refleja completamente el verdadero rendimiento del clasificador. Así, comunmente es considerado el \textit{recall} para solucionar parcialmente este problema. El \textit{recall} toma en cuenta los falsos negativos (repuestas predichas como falsas cuando en realidad son verdaderas). Adicionalmente, para evaluar el rendimiento final de un clasificador en forma completa se usa el \textit{f1-score}. El f1-score toma en consideración tanto \textit{precision} y el \textit{recall}, obtiendo una penalización del rendimiento del clasificador cada vez que este se equivoque \cite{30Mconfusion}.
+Así, la matriz de confusión cumple un papel importante en el calculo de \textit{precision}, \textit{recall} y \textit{f1-score}. En la Tabla \ref{tab:estruc_confusion_matrix} se puede observar la estructura general de una  matriz de confusión. así mismo en las ecuaciones \ref{eq:Aprecision} y \ref{eq:Arecall}  se muestra el uso de los elementos la matriz de confusión para calcular las métricas de \textit{precision} y \textit{recall} respectivamente. Finalmente, la ecuación \ref{eq:Af1score} muestra el cálculo de \textit{f1-score}. 
+
 
 \begin{table}[!htb]
-    \centering
-    \includegraphics[width=50mm]{Imagenes/matriz_confusion.png}
-    \caption{Ejemplo de una matriz de confusión}
-    \label{tab:matriz_confusion}
-   \vspace{0.5cm}
-    \includegraphics[width=50mm]{Imagenes/interpretacion_matriz_confusion.png}
-    \caption{Interpretación de la matriz de confusión}
-    \label{tab:inter_matriz_confusion}
-    
+  
+  \noindent
+  \renewcommand\arraystretch{1.5}
+  \setlength\tabcolsep{0pt}
+  \begin{center}
+  \begin{tabular}{c >{\bfseries}r @{\hspace{0.7em}}c @{\hspace{0.4em}}c @{\hspace{0.7em}}l}
+    \multirow{10}{*}{\rotatebox{90}{\parbox{1.1cm}  { \bfseries\centering  Valores \\ predichos}}} & 
+      & \multicolumn{2}{c}{\bfseries Valores referenciales} & \\
+    & & \bfseries Positivos & \bfseries Negativos \\
+    & {Predichos positivos} & \MyBox{True}{Positive (TP)} & \MyBox{False}{Negative (FN)} \\[2.4em]
+    & Predichos negativos & \MyBox{False}{Positive (FP)} & \MyBox{True}{Negative (TN)} \\
+  
+  \end{tabular}
+  \end{center}
+    \caption{Estructura general de la matriz de confusión}
+        \label{tab:estruc_confusion_matrix}
 \end{table}
 
+\begin{equation}\label{eq:Aprecision}
+precision = \frac{ TP}{TP+FP}
+\end{equation}
+
+\begin{equation}\label{eq:Arecall}
+recall = \frac{ TP}{TP+FN}
+\end{equation}
+
+\begin{equation}\label{eq:Af1score}
+f1-score = \frac{2 \cdot precision\cdot recall}{precision+ recall}
+\end{equation}
 
 
 
