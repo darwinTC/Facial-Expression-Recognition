@@ -1,6 +1,6 @@
 \section{Matriz de Confusión}
 
-La matriz de confusion es una técnica que facilita el análisis del rendimiento de un algoritmo de clasificación. Frecuentemente, el rendimiento de un clasificador es solo analizado en términos de \textit{precision} (verdaderos positivos, verdaderos negativos y falsos positivos). Sin embargo, este no refleja completamente el verdadero rendimiento del clasificador. Así, comunmente es considerado el \textit{recall} para solucionar parcialmente este problema. El \textit{recall} toma en cuenta los falsos negativos (repuestas predichas como falsas cuando en realidad son verdaderas). Adicionalmente, para evaluar el rendimiento final de un clasificador en forma completa se usa el \textit{f1-score}. El f1-score toma en consideración tanto \textit{precision} y el \textit{recall}, obtiendo una penalización del rendimiento del clasificador cada vez que este se equivoque \cite{30Mconfusion}.
+La matriz de confusion es una técnica que facilita el análisis del rendimiento de un algoritmo de clasificación. Frecuentemente, el rendimiento de un clasificador es solo analizado en términos de la \textit{precision} (verdaderos positivos, verdaderos negativos y falsos positivos). Sin embargo, este no refleja completamente el verdadero rendimiento del clasificador. Así, comunmente es considerado el \textit{recall} para solucionar parcialmente este problema. El \textit{recall} toma en cuenta los falsos negativos (repuestas predichas como falsas cuando en realidad son verdaderas). Adicionalmente, para evaluar el rendimiento final de un clasificador en forma completa se usa el \textit{f1-score}. El f1-score toma en consideración tanto la \textit{precision} y el \textit{recall}, obtiendo una penalización del rendimiento del clasificador cada vez que este se equivoque \cite{30Mconfusion}.
 Así, la matriz de confusión cumple un papel importante en el calculo de \textit{precision}, \textit{recall} y \textit{f1-score}. En la Tabla \ref{tab:estruc_confusion_matrix} se puede observar la estructura general de una  matriz de confusión. así mismo en las ecuaciones \ref{eq:Aprecision} y \ref{eq:Arecall}  se muestra el uso de los elementos la matriz de confusión para calcular las métricas de \textit{precision} y \textit{recall} respectivamente. Finalmente, la ecuación \ref{eq:Af1score} muestra el cálculo de \textit{f1-score}. 
 
 
@@ -14,8 +14,8 @@ Así, la matriz de confusión cumple un papel importante en el calculo de \texti
     \multirow{10}{*}{\rotatebox{90}{\parbox{1.1cm}  { \bfseries\centering  Valores \\ predichos}}} & 
       & \multicolumn{2}{c}{\bfseries Valores referenciales} & \\
     & & \bfseries Positivos & \bfseries Negativos \\
-    & {Predichos positivos} & \MyBox{True}{Positive (TP)} & \MyBox{False}{Negative (FN)} \\[2.4em]
-    & Predichos negativos & \MyBox{False}{Positive (FP)} & \MyBox{True}{Negative (TN)} \\
+    & {Positivos} & \MyBox{True}{Positive (TP)} & \MyBox{False}{Negative (FN)} \\[2.4em]
+    & Negativos & \MyBox{False}{Positive (FP)} & \MyBox{True}{Negative (TN)} \\
   
   \end{tabular}
   \end{center}
@@ -38,49 +38,32 @@ f1-score = \frac{2 \cdot precision\cdot recall}{precision+ recall}
 
 
 \section{Machine Learning}
-A grandes rasgos se puede decir que el Machine Learning o aprendizaje
-automático es un tipo de Inteligencia Artificial dirigido al desarrollo de técnicas para que
-las máquinas puedan aprender y tomar decisiones por sí mismas.
-Este aprendizaje es posible gracias a la detección de patrones dentro de un
-conjunto de datos de manera que es el propio programa el que predice qué situaciones
-podrían darse o no. Estos cálculos son los que les permiten aprender para, finalmente,
-generar decisiones y resultados fiables \cite{31MLApplications}.
 
+El \textit{machine learnin}g es un area de la la inteligencia artificial que alberga algoritmos de aprendizaje. La definición: “Se dice que un programa de computadora aprende de la experiencia E con respecto a alguna clase de tareas T y la medida de rendimiento P, si su desempeño de tareas en T, medido por P, mejora con la experiencia E.” realizada en \cite{mitchell1997machine} nos explica que significa aprender para una máquina.
+ 
 \section{Aplicaciones de Machine Learning}
-El aprendizaje automático cuenta con tantas aplicaciones como imaginemos,
-pudiéndose adaptar a tantas situaciones como datos con los que contemos. Motores de
-búsqueda, diagnósticos médicos, reconocimiento del habla y del lenguaje, robótica, entre
-otras, éstas son algunas de las actividades de nuestro día a día que se ven impulsadas por
-el \textit{machine learning} \cite{31MLApplications}:
+
+Los algoritmos de \textit{machine learning} 
+pueden ser usados para una infinidad de aplicaciones que solucionen problemas del mundo real. La amplia gama de aplicaciones en los que pueden ser utilizados los algoritmos de \textit{machine learning} van desde motores de búsqueda, diagnósticos médicos, reconocimiento del habla y del lenguaje, robótica, etc.
+Se mencionan algunas de las aplicaciones con mayor tendencia que tienen como elemento principal el uso de algoritmos de \textit{machine learning} \cite{31MLApplications}:
+
+
+ 
 
 
 \begin{itemize}
-\item Detección de rostro. Podemos verlo en nuestras cámaras móviles.
+\item Detección de rostro.
 \item Reconocimiento facial, de voz o de objetos.
-\item 	Buscadores. Para mejorar los resultados y sugerencias de búsqueda.
-\item Anti-spam. Mediante el uso de etiquetas.
-\item Anti-virus. Para la detección de software malicioso.
-\item Genética. Por ejemplo, en la clasificación de secuencias de ADN.
-
-\item Predicción y pronósticos del clima, tráfico o para evitar fallos tecnológicos en
-equipos.
-
-\item Comprensión de textos. Se aplica a resúmenes estructurados de noticias o
-comentarios sobre un tema específico.
-
+\item Motores de Busqueda.
+\item Anti-spam.
+\item Anti-virus.
+\item Genética.
+\item Predicción y pronósticos del clima.
+\item Comprensión de textos.
 \item Vehículos autónomos y robots.
-
-\item Métodos de optimización más rápidos y flexibles. Se evalúa qué momento es el
-adecuado para una tarea concreta.
-
 \item Análisis de imágenes de alta calidad.
-
-\item Análisis de datos económicos para operar en el mercado de valores o evitar el
-fraude en transacciones.
-
-\item Análisis de comportamiento de consumo y productividad. Para la identificación
-de clientes potenciales, prever qué empleados pueden ser más rentables, adaptar
-servicios a las necesidades del usuario y otros
+\item Análisis de datos económicos.
+\item Análisis de comportamiento de consumo y productividad.
 
 \end{itemize}
 
