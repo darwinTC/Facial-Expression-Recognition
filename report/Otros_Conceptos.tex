@@ -70,39 +70,39 @@ Se mencionan algunas de las aplicaciones con mayor tendencia que tienen como ele
 
 \section{Early Stopping}
 
-Durante el entrenamiento de redes neuronales, numerosas decisiones tienen que
-ser tomadas con respecto a los ajustes (hiperparámetro) utilizados, con el fin de obtener
-un buen rendimiento. Tales hiperparámetro son el número de epoch de formación: es
-decir, el número de veces que utilizaremos el conjunto de datos. Si utilizamos muy pocas
-épocas, podríamos ocasionar \textit{underfit} (es decir, no aprende todo lo que podamos de los
-datos de entrenamiento); si usamos demasiadas epoch, podríamos ocasionar un \textit{overfit} (es decir, colocar el "ruido" en los datos de entrenamiento, y no la señal).
+%https://deeplearning4j.org/earlystopping
 
-Early Stopping intenta eliminar la necesidad de configurar manualmente este
-valor. También se puede considerar un tipo de método de regularización (como L1 / L2
-y el dropout) en que se puede detener la red de \textit{overfitting}. 
+%http://page.mi.fu-berlin.de/prechelt/Biblio/stop_tricks1997.pdf
 
-La idea detrás de Early Stopping es relativamente simple \cite{32Stopping}:
+%https://arxiv.org/pdf/1703.09580.pdf
 
+
+Cuando se entrena una red neuronal se tiene que definir a priori cuantas iteraciones se harán sobre el conjunto de datos de entrenamiento. 
+Depende fuertemente del número de épocas escogido si se obtendrá un buen ajuste a los datos o por el contrario podra ocurrir sobreajuste en los datos de entrenamiento. 
+
+El método de \textit{early stopping}  ayuda a resolver el problema de escoger el número de épocas en el que logra un buen ajuste a los datos de entrenamiento \cite{32Stopping}, \cite{prechelt1998early}.
+
+Los pasos a seguir para la aplicación del método de early stopping son los siguientes:
 
 \begin{itemize}
- \item Los datos están divididos en training y test.
- \item Al final de cada epoch (o, cada N epoch):
-  \begin{itemize}
-  \item Evaluar el rendimiento de la red en el equipo de prueba
-  \item Si la red supera al mejor modelo anterior: guardar una copia de la red en
-  la epoch actual
-  \end{itemize}
-  \item Tomar como modelo final el modelo que tiene el mejor rendimiento del test
-  Esto se muestra gráficamente a continuación
+ \item Dividir la base de datos en 2 partes: base de datos de entrenamiento y base de datos de validación.
+ 
+ \item Para cada N épocas debemos hacer lo siguiente:
+   \begin{itemize}
+    \item Evaluar el error del modelo en el conjunto de validación.
+    \item Parar el entrenamiento si el error de validación es mayor respecto al anterior error de validación.
+    \item Finalmente, se selecciona el modelo creado antes del aumento del error de validación.
+   \end{itemize}
 \end{itemize}
+
+En la Figura \ref{fig:early_stopping} se puede observar la relación época y rendimiento en el conjunto de entrenamiento y el conjunto de validación. Así, como el punto óptimo en el que se alcanza el mejor rendimiento en el conjunto de validación.
 
 
 \begin{figure}[!htb]
     \centering
     \includegraphics[width=100mm]{Imagenes/early_stopping.png}
-    \caption{Representación gráfica deEarly Stopping}
+    \caption{Representación gráfica de Early Stopping \\ \textit{Fuente: deeplearning4j \cite{32Stopping}}}
     \label{fig:early_stopping}
-    
 \end{figure}
 
 
